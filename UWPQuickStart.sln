@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25009.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWPQuickStart", "MEvent\UWPQuickStart.csproj", "{CA2552C3-0297-49A1-8A19-5F1454A1139E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWPQuickStart", "UWPQuickStart\UWPQuickStart.csproj", "{CA2552C3-0297-49A1-8A19-5F1454A1139E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
