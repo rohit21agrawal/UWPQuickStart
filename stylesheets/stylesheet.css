@@ -499,13 +499,13 @@ button.btn-invert:hover {
 */
 .hero {
   background-color: black;
-  background-image: url("../images/CodePushFinal_4_bg.svg");
+  background-image: url("../images/hero.png");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
   overflow: hidden;
-  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/CodePushFinal_4_bg.svg', sizingMethod='scale');
-  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/CodePushFinal_4_bg.svg', sizingMethod='scale')"; }
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/hero.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/hero.png', sizingMethod='scale')"; }
 
 .hero-image-foreground {
   width: auto;
