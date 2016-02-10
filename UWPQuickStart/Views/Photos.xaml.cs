@@ -1,29 +1,22 @@
-﻿using System;
-using System.ComponentModel;
-using UWPQuickStart.Models;
-using Windows.Media.Capture;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.Storage.Streams;
+﻿using System.ComponentModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
+using UWPQuickStart.Models;
 
 namespace UWPQuickStart.Views
 {
-	public sealed partial class Photos : UserControl
+    public sealed partial class Photos : UserControl
     {
-        private bool _isInitialized = false;
-	    private PhotoStreamModel _photoStreamModel;
+        private readonly bool _isInitialized;
+        private readonly PhotoStreamModel _photoStreamModel;
 
         public Photos()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             _photoStreamModel = new PhotoStreamModel();
             _photoStreamModel.PropertyChanged += PhotoStreamModel_PropertyChanged;
             _photoStreamModel.InitializePhotoCollection();
-            this.DataContext = _photoStreamModel;
+            DataContext = _photoStreamModel;
             _isInitialized = true;
             UpdateView();
         }
@@ -40,22 +33,25 @@ namespace UWPQuickStart.Views
                 {
                     photoGridViewMode.IsChecked = true;
                 }
-                this.UpdateView();
+                UpdateView();
             }
         }
 
         private void UpdateView()
         {
             //Null reference check
-            if (!_isInitialized){return;}
-            this.ContentGrid.Children.Clear();
+            if (!_isInitialized)
+            {
+                return;
+            }
+            ContentGrid.Children.Clear();
             if (photoFlipViewMode.IsChecked == true)
             {
-                this.ContentGrid.Children.Add(new PhotosFlipView());
+                ContentGrid.Children.Add(new PhotosFlipView());
             }
             else if (photoGridViewMode.IsChecked == true)
             {
-                this.ContentGrid.Children.Add(new PhotosGridView());
+                ContentGrid.Children.Add(new PhotosGridView());
             }
         }
 

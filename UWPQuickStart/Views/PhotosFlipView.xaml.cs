@@ -2,11 +2,11 @@
 
 namespace UWPQuickStart.Views
 {
-	public sealed partial class PhotosFlipView : UserControl
-	{
-		public PhotosFlipView()
-		{
-			this.InitializeComponent();
-		}
-	}
+    public sealed partial class PhotosFlipView : UserControl
+    {
+        public PhotosFlipView()
+        {
+            InitializeComponent();
+        }
+    }
 }

@@ -4,72 +4,57 @@ using System.ComponentModel;
 
 namespace UWPQuickStart.Models
 {
-	enum ViewSelectionMode
-	{
-		Flip,
-		Grid
-	}
-
-    class PhotoStreamModel : INotifyPropertyChanged
+    internal enum ViewSelectionMode
     {
-		private ViewSelectionMode _viewSelectionMode;
-		public ViewSelectionMode ViewSelectionMode
-		{ 
-			get
-			{
-				return _viewSelectionMode;
-			}
-			set
-			{
-				_viewSelectionMode = value;
-				this.OnPropertyChanged("ViewSelectionMode");
-			}
-		}
+        Flip,
+        Grid
+    }
 
-		private PhotoModel _selectedItem = null;
-		public PhotoModel SelectedItem
-		{
-			get
-			{
-				if (_selectedItem == null && _streamItems.Count != 0)
-				{
-					return _streamItems[0];
-				}
-				return _selectedItem;
-			}
-			set { this._selectedItem = value; }
-		}
+    internal class PhotoStreamModel : INotifyPropertyChanged
+    {
+        private PhotoModel _selectedItem;
 
-		public event PropertyChangedEventHandler PropertyChanged;
+        private ViewSelectionMode _viewSelectionMode;
 
-		private void OnPropertyChanged(string propertyName)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
+        public ViewSelectionMode ViewSelectionMode
+        {
+            get { return _viewSelectionMode; }
+            set
+            {
+                _viewSelectionMode = value;
+                OnPropertyChanged("ViewSelectionMode");
+            }
+        }
 
-		private ObservableCollection<PhotoModel> _streamItems = new ObservableCollection<PhotoModel>();
-		public ObservableCollection<PhotoModel> StreamItems
+        public PhotoModel SelectedItem
         {
             get
             {
-                return _streamItems;
+                if (_selectedItem == null && StreamItems.Count != 0)
+                {
+                    return StreamItems[0];
+                }
+                return _selectedItem;
             }
+            set { _selectedItem = value; }
+        }
 
-            set
-            {
-                _streamItems = value;
-            }
+        public ObservableCollection<PhotoModel> StreamItems { get; set; } = new ObservableCollection<PhotoModel>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void InitializePhotoCollection()
         {
             StreamItems.Clear();
-            for(int i = 0; i < 26; i++)
+            for (var i = 0; i < 26; i++)
             {
                 StreamItems.Add(new PhotoModel(new Uri("ms-appx:///SamplePhotos/SamplePhoto.jpg")));
             }
-
         }
     }
 }
-

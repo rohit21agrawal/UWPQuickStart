@@ -3,16 +3,19 @@ using System.ComponentModel;
 
 namespace UWPQuickStart.Models
 {
-	class PhotoModel : INotifyPropertyChanged
+    internal class PhotoModel : INotifyPropertyChanged
     {
         private const double _imageSize = 128;
         private Uri _imageUri;
+
+        public PhotoModel(Uri photoLink)
+        {
+            ImageUri = photoLink;
+        }
+
         public Uri ImageUri
         {
-            get
-            {
-                return _imageUri;
-            }
+            get { return _imageUri; }
             set
             {
                 _imageUri = value;
@@ -20,20 +23,13 @@ namespace UWPQuickStart.Models
             }
         }
 
-		public double ImageSize
-		{
-			get
-			{
-				return _imageSize;
-			}
-		}
-
-		public PhotoModel(Uri photoLink)
-		{
-			this.ImageUri = photoLink;
-		}
+        public double ImageSize
+        {
+            get { return _imageSize; }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

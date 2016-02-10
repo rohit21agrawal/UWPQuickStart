@@ -8,7 +8,7 @@ namespace UWPQuickStart
 	/// </summary>
 	public class NavMenuItem
     {
-        public string Label { get; set; }
+	    public string Label { get; set; }
         public Symbol Symbol { get; set; }
         public char SymbolAsChar
         {
