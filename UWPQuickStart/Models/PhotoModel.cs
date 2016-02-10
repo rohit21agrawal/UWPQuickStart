@@ -1,8 +1,12 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using System.ComponentModel;
 
 namespace UWPQuickStart.Models
 {
+    //Object to represent the photos used in the photos control in the app. 
     internal class PhotoModel : INotifyPropertyChanged
     {
         private const double _imageSize = 128;
@@ -23,10 +27,7 @@ namespace UWPQuickStart.Models
             }
         }
 
-        public double ImageSize
-        {
-            get { return _imageSize; }
-        }
+        public double ImageSize => _imageSize;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

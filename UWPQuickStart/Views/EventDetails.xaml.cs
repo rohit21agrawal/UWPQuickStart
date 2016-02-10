@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using Windows.ApplicationModel.Appointments;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
@@ -69,6 +72,7 @@ namespace UWPQuickStart.Views
             await AppointmentManager.ShowAddAppointmentAsync(appointment, rect, Placement.Default);
         }
 
+        //Gets the physical position of the visual in tree.
         public static Rect GetElementRect(FrameworkElement element)
         {
             var transform = element.TransformToVisual(null);

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) Microsoft. All rights reserved
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System.Collections.Generic;
 using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -77,7 +80,7 @@ namespace UWPQuickStart
 
         private void NavMenu_ItemClickHandler(object sender, ItemClickEventArgs e)
         {
-            var destPage = (e.ClickedItem as NavMenuItem).DestPage;
+            var destPage = (e.ClickedItem as NavMenuItem)?.DestPage;
             AppNavigationUtil.SetSplitViewContent(rootSplitView, destPage, true);
             rootSplitView.IsPaneOpen = false;
         }

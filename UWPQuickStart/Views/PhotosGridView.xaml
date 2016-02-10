@@ -17,7 +17,7 @@
                     <Grid Height="{Binding ImageSize}" Width="{Binding ImageSize`}">
                         <Image Width="{Binding ImageSize}" Height="{Binding ImageSize}" Stretch="UniformToFill" HorizontalAlignment="Center">
                             <Image.Source>
-                                <BitmapImage UriSource="{Binding ImageUri}" DecodePixelHeight="{Binding ImageSize}" DecodePixelWidth="{Binding ImageSize}"></BitmapImage>
+                                <BitmapImage UriSource="{Binding ImageUri}" DecodePixelHeight="{Binding ImageSize}" DecodePixelWidth="{Binding ImageSize}" />
                             </Image.Source>
                         </Image>
                     </Grid>

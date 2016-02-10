@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Windows.ApplicationModel;
@@ -28,6 +31,8 @@ namespace UWPQuickStart
             EventModel = new EventModel();
         }
 
+
+        //Tracks user navigation to handle the case where the user presses the back button.
         internal static Stack<Type> NavigationHistory { get; set; }
 
         //Singleton object
