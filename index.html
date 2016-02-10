@@ -6,28 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-  <body class="home">
-    <header>
-        <div class="nav">
-        <ul>
-            <li class="home"><a class="active" href="/UWPQuickStart/index.html#">Home</a></li>
-            <li class="started"><a  href="/UWPQuickStart/docs/getting-started.html">Get Started</a></li>
-            <li class="learn"><a  href="/UWPQuickStart/docs/customize.html">Learn</a></li>
-            <li class="challenges"><a href="/UWPQuickStart/docs/challenges/challenges.html">Challenges</a></li>
-            <li class="resources"><a href="/UWPQuickStart/docs/resources.html">Resources</a></li>
-        </ul>
-        </div>
+  <body>
+    <header role="banner">
+	   <nav class="navbar navbar-default navbar-fixed-top">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar_center" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="home"><a class="active" href="/UWPQuickStart/index.html">Home</a></li>
+                        <li class="started"><a  href="/UWPQuickStart/docs/getting-started.html">Get Started</a></li>
+                        <li class="learn"><a  href="/UWPQuickStart/docs/customize.html">Learn</a></li>
+                        <li class="challenges"><a href="/UWPQuickStart/docs/challenges/challenges.html">Challenges</a></li>
+                        <li class="resources"><a href="/UWPQuickStart/docs/resources.html">Resources</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+	   </nav>				   		
     </header>
-      
-    <section class="page-header">
-      <h1 class="project-name">The Quick Start Guide for UWP</h1>
-      <a href="https://github.com/Microsoft/UWPQuickStart" class="btn">View the GitHub Repo</a>
-      <a href="https://github.com/Microsoft/UWPQuickStart/zipball/master" class="btn">Download .zip</a>
-    </section>
-
+    <div class="top_navbar_spacer"></div>
+    <div class="drawer-overlay"></div>
+    <div class="hero" id="hero">
+        <img id="hero-image-foreground" class="hero-image-foreground" src="/UWPQuickStart/images/hero.png">
+        <div id="top_section" class="container-fluid top_section">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="hero_logo_container center-block">
+                        <div class="logo_text hidden-xs">
+                            <span class="logo_text_code">UWP Quick Start Guide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="main-content">
       <h3>
