@@ -12,32 +12,32 @@ namespace UWPQuickStart.Models
 
     class PhotoStreamModel : INotifyPropertyChanged
     {
-		private ViewSelectionMode viewSelectionMode;
+		private ViewSelectionMode _viewSelectionMode;
 		public ViewSelectionMode ViewSelectionMode
 		{ 
 			get
 			{
-				return viewSelectionMode;
+				return _viewSelectionMode;
 			}
 			set
 			{
-				viewSelectionMode = value;
+				_viewSelectionMode = value;
 				this.OnPropertyChanged("ViewSelectionMode");
 			}
 		}
 
-		private PhotoModel selectedItem = null;
+		private PhotoModel _selectedItem = null;
 		public PhotoModel SelectedItem
 		{
 			get
 			{
-				if (selectedItem == null && _streamItems.Count != 0)
+				if (_selectedItem == null && _streamItems.Count != 0)
 				{
 					return _streamItems[0];
 				}
-				return selectedItem;
+				return _selectedItem;
 			}
-			set { this.selectedItem = value; }
+			set { this._selectedItem = value; }
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

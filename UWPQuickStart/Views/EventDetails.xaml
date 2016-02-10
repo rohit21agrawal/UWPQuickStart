@@ -27,12 +27,12 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="WHERE" FontWeight="SemiBold" Foreground="{StaticResource TextBrush}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20"/>
                 <maps:MapControl x:Name="mapControl" MapServiceToken="USE YOUR MAPS KEY HERE" Grid.Row="1"/>
-                <Button VerticalAlignment="Center" Height="{StaticResource ButtonHeight}" Width="{StaticResource ColumnWidth}" HorizontalAlignment="Center" Content="GET DIRECTIONS" Click="getDirections" FontSize="24" Background="{StaticResource ButtonBrush}" Grid.Row="2"/>
+                <Button VerticalAlignment="Center" Height="{StaticResource ButtonHeight}" Width="{StaticResource ColumnWidth}" HorizontalAlignment="Center" Content="GET DIRECTIONS" Click="GetDirections" FontSize="24" Background="{StaticResource ButtonBrush}" Grid.Row="2"/>
                 <TextBlock Text="WHEN" FontWeight="SemiBold" Grid.Row="3" Foreground="{StaticResource TextBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
                 <Grid Grid.Row="4" Background="{StaticResource PanelBackground}">
                     <TextBlock Text="{Binding EventStartTimeFriendly}" Foreground="{StaticResource TextBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
-                <Button VerticalAlignment="Center" Height="{StaticResource ButtonHeight}" Width="{StaticResource ColumnWidth}" HorizontalAlignment="Center" Content="ADD TO MY CALENDAR" Click="addEventToCalendar" FontSize="24" Background="{StaticResource ButtonBrush}" Grid.Row="5" Margin="0,0,0,40"/>
+                <Button VerticalAlignment="Center" Height="{StaticResource ButtonHeight}" Width="{StaticResource ColumnWidth}" HorizontalAlignment="Center" Content="ADD TO MY CALENDAR" Click="AddEventToCalendar" FontSize="24" Background="{StaticResource ButtonBrush}" Grid.Row="5" Margin="0,0,0,40"/>
             </Grid>
         </ScrollViewer>
     </Grid>

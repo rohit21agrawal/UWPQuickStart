@@ -17,7 +17,7 @@
             <ImageBrush ImageSource="/Assets/HeroImage.jpg"
                         Stretch="UniformToFill"/>
         </Grid.Background>
-        <SplitView x:Name="RootSplitView"
+        <SplitView x:Name="rootSplitView"
                    Grid.Row="1"
                    DisplayMode="Overlay"
                    CompactPaneLength="48"
@@ -32,7 +32,7 @@
                     <ListView x:Name="navMenuList"
                               SelectionMode="Single"
                               IsItemClickEnabled="True"
-                              ItemClick="ItemClickHandler"
+                              ItemClick="NavMenu_ItemClickHandler"
                               Margin="-8,0,0,0">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -58,7 +58,7 @@
             <ToggleButton x:Name="TogglePaneButton"
                           TabIndex="1"
                           Style="{StaticResource SplitViewTogglePaneButtonStyle}"
-                          IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
+                          IsChecked="{Binding IsPaneOpen, ElementName=rootSplitView, Mode=TwoWay}"
                           Unchecked="TogglePaneButton_Checked"
                           AutomationProperties.Name="Menu"
                           ToolTipService.ToolTip="Menu" 

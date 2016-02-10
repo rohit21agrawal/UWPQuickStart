@@ -5,7 +5,7 @@ namespace UWPQuickStart.Models
 {
 	class PhotoModel : INotifyPropertyChanged
     {
-        private double imageSize = 128;
+        private const double _imageSize = 128;
         private Uri _imageUri;
         public Uri ImageUri
         {
@@ -24,7 +24,7 @@ namespace UWPQuickStart.Models
 		{
 			get
 			{
-				return imageSize;
+				return _imageSize;
 			}
 		}
 

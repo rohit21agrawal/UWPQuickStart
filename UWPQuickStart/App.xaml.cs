@@ -14,10 +14,10 @@ namespace UWPQuickStart
 	/// </summary>
 	sealed partial class App : Application
     {
-		internal static Stack<Type> NavigationHistory;
+		internal static Stack<Type> NavigationHistory { get; set; }
 
 		//Singleton object
-		public static EventModel EventModel = new EventModel();
+		internal static EventModel EventModel { get; set; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -28,6 +28,8 @@ namespace UWPQuickStart
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             NavigationHistory = new Stack<Type>();
+
+            EventModel = new EventModel();
         }
         
         /// <summary>
@@ -55,11 +57,6 @@ namespace UWPQuickStart
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
-
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    //TODO: Load state from previously suspended application
-                }
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;

@@ -38,7 +38,7 @@
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="2" Margin="0,40,0,0">
-                    <Button VerticalAlignment="Center" Height="{StaticResource ButtonHeight}" Width="{StaticResource ColumnWidth}" HorizontalAlignment="Center" Content="RSVP NOW" Click="rsvpHandler" FontSize="24" Background="{StaticResource ButtonBrush}"/>
+                    <Button VerticalAlignment="Center" Height="{StaticResource ButtonHeight}" Width="{StaticResource ColumnWidth}" HorizontalAlignment="Center" Content="RSVP NOW" Click="rsvpButtonHandler" FontSize="24" Background="{StaticResource ButtonBrush}"/>
                 </Grid>
             </Grid>
         </ScrollViewer>

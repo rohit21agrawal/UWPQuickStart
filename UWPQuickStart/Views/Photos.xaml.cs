@@ -14,16 +14,17 @@ namespace UWPQuickStart.Views
 {
 	public sealed partial class Photos : UserControl
     {
-        bool isInitialized = false;
-        private PhotoStreamModel photoStreamModel = new PhotoStreamModel();
+        private bool _isInitialized = false;
+	    private PhotoStreamModel _photoStreamModel;
 
         public Photos()
         {
-            photoStreamModel.PropertyChanged += PhotoStreamModel_PropertyChanged;
-            photoStreamModel.InitializePhotoCollection();
             this.InitializeComponent();
-            this.DataContext = photoStreamModel;
-            isInitialized = true;
+            _photoStreamModel = new PhotoStreamModel();
+            _photoStreamModel.PropertyChanged += PhotoStreamModel_PropertyChanged;
+            _photoStreamModel.InitializePhotoCollection();
+            this.DataContext = _photoStreamModel;
+            _isInitialized = true;
             UpdateView();
         }
 
@@ -31,7 +32,7 @@ namespace UWPQuickStart.Views
         {
             if (e.PropertyName == "ViewSelectionMode")
             {
-                if (photoStreamModel.ViewSelectionMode == ViewSelectionMode.Flip)
+                if (_photoStreamModel.ViewSelectionMode == ViewSelectionMode.Flip)
                 {
                     photoFlipViewMode.IsChecked = true;
                 }
@@ -45,16 +46,15 @@ namespace UWPQuickStart.Views
 
         private void UpdateView()
         {
-            if (!isInitialized) return;
-
+            //Null reference check
+            if (!_isInitialized){return;}
+            this.ContentGrid.Children.Clear();
             if (photoFlipViewMode.IsChecked == true)
             {
-                this.ContentGrid.Children.Clear();
                 this.ContentGrid.Children.Add(new PhotosFlipView());
             }
-            if (photoGridViewMode.IsChecked == true)
+            else if (photoGridViewMode.IsChecked == true)
             {
-                this.ContentGrid.Children.Clear();
                 this.ContentGrid.Children.Add(new PhotosGridView());
             }
         }
@@ -67,96 +67,6 @@ namespace UWPQuickStart.Views
         private void photoFlipViewMode_Checked(object sender, RoutedEventArgs e)
         {
             UpdateView();
-        }
-
-
-        private async void CameraButton_Click(object sender, RoutedEventArgs e)
-        {
-            CameraCaptureUI captureUI = new CameraCaptureUI();
-            captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
-
-            StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
-            
-            if (photo == null)
-            {
-                // User cancelled photo capture
-                return;
-            }
-
-            BitmapImage bmp = new BitmapImage();
-            IRandomAccessStream stream = await photo.OpenAsync(FileAccessMode.Read);
-            bmp.SetSource(stream);
-
-            bool toSave = false;
-            var cd = new ContentDialog();
-            var grid = new Grid();
-            grid.Children.Add(new Image
-            {
-                Source = bmp,
-                Stretch = Stretch.UniformToFill
-            });
-
-            cd.Content = grid;
-            cd.Title = "";
-            cd.PrimaryButtonText = "Add to Stream";
-            cd.PrimaryButtonClick += delegate
-            {
-                toSave = true;
-            };
-            cd.SecondaryButtonText = "Cancel";
-
-            await cd.ShowAsync();
-            if (toSave)
-            {
-                //Add to stream code
-                //await photoStreamModel.AddPhoto(stream.AsStream());
-            }
-        }
-
-        private async void AddPhotoButton_Click(object sender, RoutedEventArgs e)
-        {
-            FileOpenPicker filePicker = new FileOpenPicker();
-
-            filePicker.FileTypeFilter.Add(".jpeg");
-            filePicker.FileTypeFilter.Add(".png");
-            filePicker.FileTypeFilter.Add(".bmp");
-            filePicker.FileTypeFilter.Add(".jpg");
-            filePicker.FileTypeFilter.Add(".gif");
-            filePicker.FileTypeFilter.Add(".tiff");
-
-            StorageFile storageFile = await filePicker.PickSingleFileAsync();
-
-            if (storageFile != null)
-            {
-                BitmapImage bmp = new BitmapImage();
-                IRandomAccessStream stream = await storageFile.OpenAsync(FileAccessMode.Read);
-                bmp.SetSource(stream);
-
-                bool toSave = false;
-                var cd = new ContentDialog();
-                var grid = new Grid();
-                grid.Children.Add(new Image
-                {
-                    Source = bmp,
-                    Stretch = Stretch.UniformToFill
-                });
-
-                cd.Content = grid;
-                cd.Title = "";
-                cd.PrimaryButtonText = "Add to Stream";
-                cd.PrimaryButtonClick += delegate
-                {
-                    toSave = true;
-                };
-                cd.SecondaryButtonText = "Cancel";
-
-                await cd.ShowAsync();
-                if (toSave)
-                {
-                    //Add to stream code
-                    //await photoStreamModel.AddPhoto(stream.AsStream());
-                }
-            }
         }
     }
 }

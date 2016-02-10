@@ -5,6 +5,7 @@ using Windows.Foundation;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using UWPQuickStart.Utils;
 
 namespace UWPQuickStart
 {
@@ -14,7 +15,7 @@ namespace UWPQuickStart
 	public sealed partial class EventMainPage : Page
     {
         //Declare the top level nav items
-        private List<NavMenuItem> navList = new List<NavMenuItem>(
+        private List<NavMenuItem> _navList = new List<NavMenuItem>(
             new[]
             {
                 new NavMenuItem()
@@ -40,9 +41,9 @@ namespace UWPQuickStart
         public EventMainPage()
         {
             this.InitializeComponent();
-            navMenuList.ItemsSource = navList;
+            navMenuList.ItemsSource = _navList;
             this.DataContext = App.EventModel;
-            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
         }
 
         /// <summary>
@@ -62,70 +63,30 @@ namespace UWPQuickStart
         /// </summary>
         private void CheckTogglePaneButtonSizeChanged()
         {
-            if (this.RootSplitView.DisplayMode == SplitViewDisplayMode.Inline ||
-                this.RootSplitView.DisplayMode == SplitViewDisplayMode.Overlay)
-            {
-                var transform = this.TogglePaneButton.TransformToVisual(this);
-                var rect = transform.TransformBounds(new Rect(0, 0, this.TogglePaneButton.ActualWidth, this.TogglePaneButton.ActualHeight));
-                this.TogglePaneButtonRect = rect;
-            }
-            else
-            {
-                this.TogglePaneButtonRect = new Rect();
-            }
-
-            var handler = this.TogglePaneButtonRectChanged;
-            if (handler != null)
-            {
-                // handler(this, this.TogglePaneButtonRect);
-                handler.DynamicInvoke(this, this.TogglePaneButtonRect);
-            }
+            AppNavigationUtil.SplitViewPaneHandler(this, this.rootSplitView, this.TogglePaneButton);
+            this.TogglePaneButtonRectChanged?.DynamicInvoke(this, this.TogglePaneButtonRect);
         }
 
-        public Rect TogglePaneButtonRect
-        {
-            get;
-            private set;
-        }
-
-
+	    
+	    internal Rect TogglePaneButtonRect{get;set;}
+        
         /// <summary>
         /// An event to notify listeners when the hamburger button may occlude other content in the app.
         /// The custom "PageHeader" user control is using this.
         /// </summary>
-        public event TypedEventHandler<EventMainPage, Rect> TogglePaneButtonRectChanged;
+        internal event TypedEventHandler<EventMainPage, Rect> TogglePaneButtonRectChanged;
 
-        private void ItemClickHandler(object sender, ItemClickEventArgs e)
+        private void NavMenu_ItemClickHandler(object sender, ItemClickEventArgs e)
         {
             Type destPage = (e.ClickedItem as NavMenuItem).DestPage;  
-            
-            if (!(destPage == RootSplitView.Content.GetType()))
-            {                
-                App.NavigationHistory.Push(RootSplitView.Content.GetType());
-                RootSplitView.Content = (UserControl)Activator.CreateInstance(destPage);
-            }
-
-            if(App.NavigationHistory.Count > 0)
-            {
-                // Show UI in title bar if opted-in and in-app backstack is not empty.
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    AppViewBackButtonVisibility.Visible;
-            }
-
-			RootSplitView.IsPaneOpen = false;
+            AppNavigationUtil.SetSplitViewContent(rootSplitView, destPage, true);
+            rootSplitView.IsPaneOpen = false;
         }
 
 
         private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
         {
-            RootSplitView.Content = (UserControl)Activator.CreateInstance(App.NavigationHistory.Pop());
-
-            if(App.NavigationHistory.Count == 0)
-            {
-                // Remove the UI from the title bar if in-app back stack is empty.
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    AppViewBackButtonVisibility.Collapsed;
-            }
+            AppNavigationUtil.SetSplitViewContent(rootSplitView, null, false);
         }
     }
 }
