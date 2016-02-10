@@ -25,7 +25,6 @@ namespace UWPQuickStart.Utils
             }
         }
 
-
         internal static void SplitViewPaneHandler(EventMainPage page, SplitView rootSplitView,
             ToggleButton togglePaneButton)
         {
@@ -43,7 +42,6 @@ namespace UWPQuickStart.Utils
                 page.TogglePaneButtonRect = new Rect();
             }
         }
-
 
         internal static void SetSplitViewContent(SplitView rootSplitView, Type destPage, bool push)
         {

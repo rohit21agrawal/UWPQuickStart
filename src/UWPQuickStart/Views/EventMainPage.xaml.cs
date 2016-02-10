@@ -48,7 +48,6 @@ namespace UWPQuickStart
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
         }
 
-
         internal Rect TogglePaneButtonRect { get; set; }
 
         /// <summary>
@@ -84,7 +83,6 @@ namespace UWPQuickStart
             AppNavigationUtil.SetSplitViewContent(rootSplitView, destPage, true);
             rootSplitView.IsPaneOpen = false;
         }
-
 
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {

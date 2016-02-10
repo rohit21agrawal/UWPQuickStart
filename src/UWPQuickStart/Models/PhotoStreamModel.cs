@@ -65,7 +65,6 @@ namespace UWPQuickStart.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-
         /// <summary>
         ///     Initialize the photo collection. In this example, we just used the same photo many times. Add your own photos to
         ///     represent your event!

@@ -31,7 +31,6 @@ namespace UWPQuickStart
             EventModel = new EventModel();
         }
 
-
         //Tracks user navigation to handle the case where the user presses the back button.
         internal static Stack<Type> NavigationHistory { get; set; }
 
