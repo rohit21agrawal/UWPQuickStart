@@ -136,7 +136,7 @@
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">3</div>
                 <div class="col-md-7 getting-started-text">
-                    <p>Now that we have our Imgur client ID set, the only remaining info we need is an album ID and an album delete hash. The ID is what will let people view the photos, and the delete hash will be our <strong>private</strong> key that will let us (and only us) contribute to the album. To create an album, first open up <storng>PhotoStreamModel.cs</strong> and find the <strong>InitializePhotoCollection</strong> method. Since we're going to be getting all of our images from Imgur going forward, just go ahead and delete the whole contents of the method. Inside of the method, add the following line of code: <code>await PhotoStreamUtil.CreateAlbum();</code>. You'll also need to add the following using statement to the top of the class: <code>using UWPQuickStart.Utils;</code>.</p>
+                    <p>Now that we have our Imgur client ID set, the only remaining info we need is an album ID and an album delete hash. The ID is what will let people view the photos, and the delete hash will be our <strong>private</strong> key that will let us (and only us) contribute to the album. To create an album, first open up <storng>PhotoStreamModel.cs</strong> and find the <strong>InitializePhotoCollection</strong> method. Since we're going to be getting all of our images from Imgur going forward, just go ahead and delete the whole contents of the method. Inside of the method, add the following line of code: <code>await PhotoStreamUtil.CreateAlbum();</code>. Since this is an asynchronous method, you'll also need to add an async identifier to the method signature - it should now be: <code>public async void InitializePhotoCollection()</code>. Finally you'll' need to add the following using statement to the top of the class: <code>using UWPQuickStart.Utils;</code>.</p>
                 </div>
                 <div class="col-md-5">
                     <img src="/UWPQuickStart/images/online-image-sync/b-step-3.png" >
@@ -206,10 +206,31 @@
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">1</div>
                 <div class="col-md-7 getting-started-text">
-                    <p>The first thing we have to do is register our application on Imgur to get our API Keys. When you sign up, you should get an email with the Client ID and Client Secret. Since we are trying to avoid any authentication (signing in), we should only need to use our Client ID – but keep both values handy just in case!</p>
+                    <p>We're almost there! All that remains is to enable our users to add pictures, and make sure we retrieve pictures from the right source - in this case, Imgur! To start with, let's make sure our photos are getting initialized from the right place. In the <strong>PhotoStreamModel.cs</strong> class, let's update the <code>public async void InitializePhotoCollection()</code> method. Let's delete the line that we added earlier - since our album is already created, we don't need to create anymore. Replace it with <code>await PhotoStreamUtil.GetImagesFromImgur(this);</code>.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/customize/a-step-1.png" >
+                    <img src="/UWPQuickStart/images/customize/c-step-1.png"/>
+                </div>
+            </div>
+            
+            <div> 
+                <div class="row" style="height: 50px">
+            </div>
+            
+             <div class="row">
+                <div class="number_circle" style="margin-top: 5px">2</div>
+                <div class="col-md-12 getting-started-text">
+                    <p>Now let's make it so our users can add photos. In the <strong>Photos.xaml</strong> page, let's add a new <strong>Grid RowDefinition</strong> with height Auto. Next we'll add a <strong>CommandBar</strong> control to our new row with two <strong>AppBarButtons</strong>. One for taking a picture with my device's camera, and one for choosing a file that is already on my device. We can make the background of our <strong>CommandBar</strong> the same as our buttons for consistency by adding a <code>Background="{StaticResource ButtonBrush}"</code> property. </p>
+                </div>
+            </div>
+
+            <div> 
+                <div class="row" style="height: 10px">
+            </div>
+            
+             <div class="row">
+                <div class="col-md-12 getting-started-text">
+                    <img/>
                 </div>
             </div>
         </div>
