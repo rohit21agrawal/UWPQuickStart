@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.1">
+  <CommandSet xml:lang="en-us" Name="UWPQuickStart_en-us">
+    <CommandPrefix> Event, </CommandPrefix>
+    <Example> Event Register </Example>
+
+    <Command Name="GetStarted">
+      <Example> Register  </Example>
+      <ListenFor> Register </ListenFor>
+      <Feedback>  Let's get registered </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="Photos">
+      <Example> Photos  </Example>
+      <ListenFor> Photos </ListenFor>
+      <Feedback>  Let's see some pictures </Feedback>
+      <Navigate/>
+    </Command>
+
+  </CommandSet>
+
+  <!-- Other CommandSets for other languages -->
+
+</VoiceCommands>

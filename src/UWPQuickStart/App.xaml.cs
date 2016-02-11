@@ -10,6 +10,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using UWPQuickStart.Models;
+using Windows.ApplicationModel.VoiceCommands;
+using Windows.Media.SpeechRecognition;
 
 namespace UWPQuickStart
 {
@@ -29,6 +31,7 @@ namespace UWPQuickStart
             NavigationHistory = new Stack<Type>();
 
             EventModel = new EventModel();
+            StartingPage = typeof(EventMainPage);
         }
 
         //Tracks user navigation to handle the case where the user presses the back button.
@@ -37,12 +40,14 @@ namespace UWPQuickStart
         //Singleton object
         internal static EventModel EventModel { get; set; }
 
+        internal static Type StartingPage { get; set; }
+
         /// <summary>
         ///     Invoked when the application is launched normally by the end user.  Other entry points
         ///     will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (Debugger.IsAttached)
@@ -50,6 +55,8 @@ namespace UWPQuickStart
                 DebugSettings.EnableFrameRateCounter = false;
             }
 #endif
+            var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///CortanaRules.xml"));
+            await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
 
             var rootFrame = Window.Current.Content as Frame;
 
@@ -71,10 +78,44 @@ namespace UWPQuickStart
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof (EventMainPage), e.Arguments);
+                rootFrame.Navigate(StartingPage, e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+
+            if (args.Kind != ActivationKind.VoiceCommand)
+            {
+                return;
+            }
+
+            var EventArgs = args as VoiceCommandActivatedEventArgs;
+            SpeechRecognitionResult ActivateResult = EventArgs.Result;
+            string CommandName = ActivateResult.RulePath[0];
+            string textSpoken = ActivateResult.Text;
+
+            switch (CommandName)
+            {
+                case "GetStarted":
+                    {
+                        // We don't want to do anything special in this case
+                        return;
+                    }
+                case "Photos":
+                    {
+                        StartingPage = typeof(Views.Photos);
+                        return;
+                    }
+                default:
+                    {
+                        // We got a command we don't recognize, but for now we'll just ignore
+                        return;
+                    }
+            }
         }
 
         /// <summary>
