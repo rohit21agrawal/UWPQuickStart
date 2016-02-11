@@ -64,7 +64,7 @@
                     <p>The first thing we will do is to update the data models that the app is using. Open <strong>EventModel.cs</strong>, located in the Models folder of the project.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/customize/step-1.png" >
+                    <img src="/UWPQuickStart/images/customize/a-step-1.png" >
                 </div>
             </div> 
             <div class="row">
@@ -84,7 +84,7 @@
                     <p>Change the various properties to the specifics for your event. In this case, we are going to change the EventName from “John’s Band Debut” to “Trisha turns 3!”.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/customize/step-2.png" >
+                    <img src="/UWPQuickStart/images/customize/a-step-2.png" >
                 </div>
             </div> 
              <div class="row">
@@ -98,7 +98,7 @@
                     <p>In <strong>EventDetails.xaml</strong>, you will see a Map control we are using(<code>&lt;maps:MapControl/&gt;</code>). If you run the application and navigate to the “Event Details” page, you will see an invalid token message over the map control. This is expected, and let’s fix that.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/customize/step-3.png" >
+                    <img src="/UWPQuickStart/images/customize/a-step-3.png" >
                 </div>
             </div> 
              <div class="row">
@@ -112,7 +112,7 @@
                     <p>To use the Map control for your own app, you will need to visit the Bing Maps developer portal and request a free token (<a>https://www.bingmapsportal.com/Application</a>) – all you need for this is a Microsoft account.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/customize/step-4.png" >
+                    <img src="/UWPQuickStart/images/customize/a-step-4.png" >
                 </div>
             </div> 
              <div class="row">
@@ -128,7 +128,7 @@
                 <div class="col-md-5">
                     <div class="well_code" style="margin-top: 0px">
                         <p style="font-size: 1.2em">
-                                <pre><code>&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt;</code></pre>
+                                <code>&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt;</code>
                         </p>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
             <div class="row">
                 <div class="col-md-12 getting-started-text">
                     <h1></h1>
-                    <p>Testing the application should now get rid of the warning that you previously saw.</p>
+                    <p><strong>Tip: </strong>Testing the application should now get rid of the warning that you previously saw.</p>
                 </div>
             </div>
              <div class="row">
@@ -158,12 +158,10 @@
                 </div>
                 <div class="col-md-5">
                     <div class="well_code" style="margin-top: 0px">
-                        <div>
-                            <button type="button" data-clipboard-text="public void InitializePhotoCollection()&#10{&#10&#10StreamItems.Clear();&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Cake.jpg&quot;)));&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Balloons.jpg&quot;)));&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Party.jpg&quot;)));&#10}" class="btn btn-primary pull-right zeroClipBtn">Copy</button>
-                        </div>
                         <p style="font-size: 1.2em">
                             <pre><code>public void InitializePhotoCollection()
 {
+
     StreamItems.Clear();
     StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Cake.jpg&quot;)));
     StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Balloons.jpg&quot;)));
@@ -178,11 +176,185 @@
                 <h1></h1>
             </div>
             
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">7</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Once we have made this changes, our app is almost ready for submission to the Windows Store. Let’s test it to make sure it looks and works great!</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/a-step-4.png" >
+                </div>
+            </div> 
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+            
+            <hr>
+            
             <span class="doc-fragment-anchor" id=link-1"></span>
             <div class="row">  
-                <h2 id="Getting-ready-for-store">
-                    Getting the app ready for submission to the Windows Store
-                </h2>
+                <h1 id="Getting-ready-for-store">
+                    Getting the app ready for the Windows Store
+                </h1>
+                <h1></h1>
+            </div>
+            
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">1</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>To submit your app to the Windows Store, the first step is to register for a Developer account if you don’t already have one. Visit <a>https://dev.windows.com/programs/join</a> to sign up for a new account</p>
+                    <p>Once you register for a Developer account, you will be able to see your Dashboard that lists all of the apps that you might have ever published before.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/b-step-1.png" >
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-12 getting-started-text">
+                    <h1></h1>
+                    <p><strong>Tip: </strong>You can start your submission process by creating a new app right away, or you can come back to this later after you have built your app packages for the Store.</p>
+                </div>
+            </div>
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+            
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">2</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Back in Visual Studio, open Package.appxmanifest from the Solution explorer and consider updating the Display Name and Description of the app. You may also choose to update the various assets used including the Splash screen show to the user when the app is starting up, the Tile for the app in the Start menu, etc. – you will file all of these in the Assets folder of project in the Solution explorer.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/b-step-2.png" >
+                </div>
+            </div> 
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+            
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">3</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Use Visual Studio to associate your app with the Windows Store and reserve a name for it. To start this process, go to the Project -> Store -> Associate App with Store. You will be prompted for the credentials that you used to setup your Developer account, followed by you reserving a name for your app.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/b-step-3.png" >
+                </div>
+            </div> 
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+            
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">4</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>You are now ready to building and submit your app packages to the Store. To do this, got to the Project -> Store -> Create App Packages, and select the default choices. At the end of the process, after a couple of minutes required to build all of the flavors, you will have everything you need to submit the app to the Store.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/b-step-4.png" >
+                </div>
+            </div> 
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+            
+            <hr>
+            
+            <span class="doc-fragment-anchor" id=link-2"></span>
+            <div class="row">  
+                <h1 id="Submitting-to-store">
+                    Submitting your application to the Windows Store
+                </h1>
+                <h1></h1>
+            </div>
+            
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">1</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Start a new submission by specifying metadata for the app including a description so users can find it in the Store, images, what to charge for the app (or Free!), etc.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/c-step-1.png" >
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-md-12 getting-started-text">
+                    <h1></h1>
+                    <p><strong>Tip: </strong>Nobody likes uninvited guests! If you want to have an app in Store and want it to be not discoverable, you can choose to specify this when you configuring Pricing and availability -> Distribution -> Hide this app from the Store. You can then send a direct download link to the app only to your Friends (covered in the next section). </p>
+                </div>
+            </div>
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+            
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">2</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>For the Packages, navigate to the folder where you decided to create them a few steps above, and select the singular .appxupload file – that particular package contains all of the artifacts required to have a functional app in the Store.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/c-step-2.png" >
+                </div>
+            </div> 
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+            
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">3</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Finally, hit Submit! Now it is your turn to wait for a few hours as the app undergoes certification for compliance with the Windows Store policies. You will get an e-mail at the end of the process to whatever e-mail address you chose to receive communications at the time of setting up your Developer account. You can also go back to your Dashboard and check the status of your active submissions at any point.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/c-step-3.png" >
+                </div>
+            </div> 
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+            
+            <hr>
+            
+            <span class="doc-fragment-anchor" id=link-3"></span>
+            <div class="row">  
+                <h1 id="Share-store-link">
+                    Sending a link to your app to your friends (Optional)
+                </h1>
+                <h1></h1>
+            </div>
+            
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">1</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Congratulations! Your app is now live in the Store. You can get a link to the app to send to your friends by e-mail on the Dashboard for your app.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/d-step-1.png" >
+                </div>
+            </div>
+             <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
+             <hr>
+            
+            <span class="doc-fragment-anchor" id=link-4"></span>
+            <div class="row">  
+                <h1 id="Styling-ui">
+                    Changing the UI styling for the app (Optional)
+                </h1>
+                <h1></h1>
             </div>
         </div>           
     </div>
