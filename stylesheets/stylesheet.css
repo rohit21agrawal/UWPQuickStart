@@ -399,9 +399,12 @@ img {
 */
 /*.footer-container {*/
 .site-footer {
-  background-color: #231E20;
+  /*background-color: #231E20;*/
   width: 100%;
-  position: relative;
+  /*position: relative;*/
+  text-align: center;
+  font-size: 1.4em;
+  margin: 0 auto;
   z-index: 1; }
 
 #footer {
