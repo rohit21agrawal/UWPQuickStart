@@ -209,7 +209,7 @@
                     <p>We're almost there! All that remains is to enable our users to add pictures, and make sure we retrieve pictures from the right source - in this case, Imgur! To start with, let's make sure our photos are getting initialized from the right place. In the <strong>PhotoStreamModel.cs</strong> class, let's update the <code>public async void InitializePhotoCollection()</code> method. Let's delete the line that we added earlier - since our album is already created, we don't need to create anymore. Replace it with <code>await PhotoStreamUtil.GetImagesFromImgur(this);</code>.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/customize/c-step-1.png"/>
+                    <img src="/UWPQuickStart/images/online-image-sync/c-step-1.png"/>
                 </div>
             </div>
             
@@ -220,7 +220,17 @@
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">2</div>
                 <div class="col-md-12 getting-started-text">
-                    <p>Now let's make it so our users can add photos. In the <strong>Photos.xaml</strong> page, let's add a new <strong>Grid RowDefinition</strong> with height Auto. Next we'll add a <strong>CommandBar</strong> control to our new row with two <strong>AppBarButtons</strong>. One for taking a picture with my device's camera, and one for choosing a file that is already on my device. We can make the background of our <strong>CommandBar</strong> the same as our buttons for consistency by adding a <code>Background="{StaticResource ButtonBrush}"</code> property. </p>
+                    <p>Now let's make it so our users can add photos. In the <strong>Photos.xaml</strong> page, let's add a new <strong>Grid RowDefinition</strong> with height Auto. Next we'll add a <strong>CommandBar</strong> control to our new row with two <strong>AppBarButton</strong> controls. One for taking a picture with my device's camera, and one for choosing a file that is already on my device. We can make the background of our <strong>CommandBar</strong> the same as our buttons for consistency by adding a <code>Background="{StaticResource ButtonBrush}"</code> property. To style the <strong>AppBarButton</strong> controls, we can assign the following properties. For the first button - 
+                    <ol>
+                        <li><code>Icon="Camera"</code></li>  
+                        <li><code>Label="Take Picture"</code></li>
+                        <li><code>Click="CameraButton_Click"</code></li>
+                    </ol> and for the second button - 
+                    <ol>
+                        <li><code>Icon="OpenFile"</code></li>  
+                        <li><code>Label="Add Picture"</code></li>
+                        <li><code>Click="AddPhotoButton_Click"</code></li>
+                    </ol></p>
                 </div>
             </div>
 
