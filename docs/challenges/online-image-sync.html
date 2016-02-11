@@ -172,7 +172,7 @@
                 <div class="col-md-7 getting-started-text">
                     <p>The breakpoint should immediately be triggered when you navigate to the <strong>Photos</strong> page. Press F11 to step into the code and the <code>CreateAlbum</code> method should be triggered in the <strong>PhotoStreamUtil.cs</strong> class that we added. Add another breakpoint to the very end of the method - on the curly bracket - and hit F5 to let the code resume. Once the next breakpoint is hit, find your Locals inspector. This is at the bottom of your editor by default, but you can open it via Quick Launch by pressing Ctrl + Q and typing <strong>Locals</strong>. In your Locals inspector, you should see both <strong>response</strong> and <strong>content</strong>. To the right of <strong>content</strong> you should see a magnifying glass. Click that and then click <strong>JSON Visualizer</strong>. Expand the data tab and you will have both your album delete hash and album ID!</p>
                 </div>
-                <div class="col-md-5 getting-started-text">
+                <div class="col-md-5">
                    <img src="/UWPQuickStart/images/online-image-sync/b-step-5.png"/>
                 </div>
             </div>
@@ -187,6 +187,19 @@
                 </div>
             </div>
             
+            <div> 
+                <div class="row" style="height: 50px">
+            </div>
+            
+             <div class="row">
+                <div class="number_circle" style="margin-top: 5px">6</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>The last change we need to make to the source is to update the <code>AlbumDeleteHash</code> and <code>AlbumId</code> properties in the <strong>PhotoStreamUtil.cs</strong> class. Replace the values of both of these properties with the delete hash and album ID retrieved in the last step.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/online-image-sync/b-step-6.png"/>
+                </div>
+            </div>
             
             <span class="doc-fragment-anchor" id=link-3"></span>
             <hr id="Update-client-ID-anchor">
