@@ -95,6 +95,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\AppNavigationUtil.cs" />
+    <Compile Include="Utils\PhotoStreamUtil.cs" />
     <Compile Include="Views\EventHome.xaml.cs">
       <DependentUpon>EventHome.xaml</DependentUpon>
     </Compile>

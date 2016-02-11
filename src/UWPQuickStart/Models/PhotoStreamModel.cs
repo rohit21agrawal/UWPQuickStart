@@ -4,6 +4,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using UWPQuickStart.Utils;
 
 namespace UWPQuickStart.Models
 {
@@ -69,13 +70,11 @@ namespace UWPQuickStart.Models
         ///     Initialize the photo collection. In this example, we just used the same photo many times. Add your own photos to
         ///     represent your event!
         /// </summary>
-        public void InitializePhotoCollection()
+        public async void InitializePhotoCollection()
         {
-            StreamItems.Clear();
-            for (var i = 0; i < 26; i++)
-            {
-                StreamItems.Add(new PhotoModel(new Uri("ms-appx:///SamplePhotos/SamplePhoto.jpg")));
-            }
+            //Uncomment me to create an album!
+            //await PhotoStreamUtil.CreateAlbum();
+            await PhotoStreamUtil.GetImagesFromImgur(this);
         }
     }
 }
