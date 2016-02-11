@@ -31,7 +31,6 @@ namespace UWPQuickStart
             NavigationHistory = new Stack<Type>();
 
             EventModel = new EventModel();
-            StartingPage = typeof(EventMainPage);
         }
 
         //Tracks user navigation to handle the case where the user presses the back button.
@@ -39,8 +38,6 @@ namespace UWPQuickStart
 
         //Singleton object
         internal static EventModel EventModel { get; set; }
-
-        internal static Type StartingPage { get; set; }
 
         /// <summary>
         ///     Invoked when the application is launched normally by the end user.  Other entry points
@@ -55,6 +52,11 @@ namespace UWPQuickStart
                 DebugSettings.EnableFrameRateCounter = false;
             }
 #endif
+            await CreateFrameAndNavigate();
+        }
+
+        private async System.Threading.Tasks.Task<Frame> CreateFrameAndNavigate()
+        {
             var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///CortanaRules.xml"));
             await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
 
@@ -78,13 +80,14 @@ namespace UWPQuickStart
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(StartingPage, e.Arguments);
+                rootFrame.Navigate(typeof(EventMainPage));
             }
             // Ensure the current window is active
             Window.Current.Activate();
+            return rootFrame;
         }
 
-        protected override void OnActivated(IActivatedEventArgs args)
+        protected async override void OnActivated(IActivatedEventArgs args)
         {
             base.OnActivated(args);
 
@@ -97,25 +100,29 @@ namespace UWPQuickStart
             SpeechRecognitionResult ActivateResult = EventArgs.Result;
             string CommandName = ActivateResult.RulePath[0];
             string textSpoken = ActivateResult.Text;
+            Type StartingPage = typeof(Views.EventHome);
 
             switch (CommandName)
             {
                 case "GetStarted":
                     {
                         // We don't want to do anything special in this case
-                        return;
+                        break;
                     }
                 case "Photos":
                     {
                         StartingPage = typeof(Views.Photos);
-                        return;
+                        break;
                     }
                 default:
                     {
                         // We got a command we don't recognize, but for now we'll just ignore
-                        return;
+                        break;
                     }
             }
+
+            Frame rootFrame = await CreateFrameAndNavigate();
+            (rootFrame.Content as EventMainPage).SwitchToWindow(StartingPage);
         }
 
         /// <summary>

@@ -80,13 +80,18 @@ namespace UWPQuickStart
         private void NavMenu_ItemClickHandler(object sender, ItemClickEventArgs e)
         {
             var destPage = (e.ClickedItem as NavMenuItem)?.DestPage;
-            AppNavigationUtil.SetSplitViewContent(rootSplitView, destPage, true);
+            SwitchToWindow(destPage);
             rootSplitView.IsPaneOpen = false;
         }
 
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {
             AppNavigationUtil.SetSplitViewContent(rootSplitView, null, false);
+        }
+
+        public void SwitchToWindow(System.Type desiredPage)
+        {
+            AppNavigationUtil.SetSplitViewContent(rootSplitView, desiredPage, true);
         }
     }
 }
