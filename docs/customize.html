@@ -43,45 +43,56 @@
 	</div>	
     
     <div id="content" class="container main_content">                       
-        <div class="col-md-2 toc-container hidden-sm hidden-xs">
+        <div class="col-md-3 toc-container hidden-sm hidden-xs">
             <div class="row">
                 
             </div>                          
         </div>      
-        <div class="col-md-8 col-md-offset-1">
-            <div class="row">  
-                <header class="doc-header">
-                    <!--<ul class="nav" style="display:inline-block;"><li><a class="edit-page-link" style="padding-left:0" href="{{ site.projecturl }}{{ page.relative_path }}" target="_blank"><span class="glyphicon glyphicon-pencil"></span><i>&nbsp;</i>Edit on GitHub</a></li></ul>-->
-                    
-                </header>  
-            </div>
+        <div class="col-md-8">
             <span class="doc-fragment-anchor" id=link-0"></span>
             <div class="row">  
-                <h2 id="Updating-the-code">
+                <h1 id="Updating-the-code">
                     Updating the Code
-                </h2>
+                </h1>
+                <p></p>
             </div>
             <div class="row"> 
-                <div class="col-md-8 getting-started-text">
-                    <p>1. The first thing we will do is to update the data models that the app is using. Open EventModel.cs, located in the Models folder of the project.</p>
+                <div class="number_circle hidden-xs hidden-sm" style="margin-top: 5px">1</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>The first thing we will do is to update the data models that the app is using. Open <strong>EventModel.cs</strong>, located in the Models folder of the project.</p>
                 </div>
-                <div class="col-md-4 getting-started-text">
-                    <img src="/UWPQuickStart/images/update_test.png" >
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/step-1.png" >
                 </div>
             </div> 
             <div class="row">
                 <div class="col-md-12 getting-started-text">
-                    <p><strong>Tip:</strong>Because we have centralized all of the data in one location, making a change ripples thru various parts of the UI that uses the same data bindings. For example, the EventName property is used in the home page of the application (EventMainPage.xaml), and in the code that sends out RSVPs (RSVP.xaml.cs).</p>
+                    <p></p>
+                    <p><strong>Tip: </strong>Because we have centralized all of the data in one location, making a change ripples thru various parts of the UI that uses the same data bindings. For example, the EventName property is used in the home page of the application (<strong>EventMainPage.xaml</strong>), and in the code that sends out RSVPs (<strong>RSVP.xaml.cs<strong>).</p>
                 </div>
             </div>
+            
             <div class="row"> 
-                <div class="col-md-8 getting-started-text">
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/step-2.png" >
+                </div>
+                <div class="number_circle hidden-xs hidden-sm" style="margin-top: 5px">2</div>
+                <div class="col-md-7 getting-started-text">
                     <p>Change the various properties to the specifics for your event. In this case, we are going to change the EventName from “John’s Band Debut” to “Trisha turns 3!”.</p>
                 </div>
-                <div class="col-md-4 getting-started-text">
-                    <img src="/UWPQuickStart/images/update_test.png">
+            </div> 
+            
+            <div class="row"> 
+                <div class="number_circle hidden-xs hidden-sm" style="margin-top: 5px">3</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>In <strong>EventDetails.xaml</strong>, you will see a Map control we are using(<code>&lt;maps:MapControl/&gt;</code>). If you run the application and navigate to the “Event Details” page, you will see an invalid token message over the map control. This is expected, and let’s fix that.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/customize/step-3.png" >
+                    
                 </div>
             </div> 
+            
             <span class="doc-fragment-anchor" id=link-1"></span>
             <div class="row">  
                 <h2 id="Getting-ready-for-store">
