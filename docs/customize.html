@@ -130,7 +130,13 @@
                         <div>
                             <button type="button" data-clipboard-text="&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt;" class="btn btn-primary pull-right zeroClipBtn">Copy</button>
                         </div>
-                        <p style="font-size: 1.2em"><code>&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt;</code></p>
+                        <p style="font-size: 1.2em">
+                            <code>
+                                <pre>
+&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt;
+                                </pre>
+                            </code>
+                        </p>
                     </div>
                 </div>
             </div> 
@@ -165,16 +171,16 @@
                         <p style="font-size: 1.2em">
                             <code>
                                 <pre>
-                                    public void InitializePhotoCollection()
-                                    {
-                                        StreamItems.Clear();
-                                        StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Cake.jpg&quot;)));
-                                        StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Balloons.jpg&quot;)));
-                                        StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Party.jpg&quot;)));
-                                    }
+public void InitializePhotoCollection()
+{
+    StreamItems.Clear();
+    StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Cake.jpg&quot;)));
+    StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Balloons.jpg&quot;)));
+    StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Party.jpg&quot;)));
+}
                                 </pre>
                             </code>
-                            </p>
+                        </p>
                     </div>
                 </div>
             </div>
