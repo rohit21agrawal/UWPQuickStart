@@ -140,7 +140,7 @@
             </div>
             
             <div class="row">
-                <div class="number_circle" style="margin-top: 5px">2</div>
+                <div class="number_circle" style="margin-top: 5px">3</div>
                 <div class="col-md-7 getting-started-text">
                     <p>Now that we have our Imgur client ID set, the only remaining info we need is an album ID and an album delete hash. The ID is what will let people view the photos, and the delete hash will be our <strong>private</strong> key that will let us (and only us) contribute to the album. To create an album, first open up <storng>PhotoStreamModel.cs</strong> and find the <strong>InitializePhotoCollection</strong> method. Since we're going to be getting all of our images from Imgur going forward, just go ahead and delete the whole contents of the method. Inside of the method, add the following line of code: <code>await PhotoStreamUtil.CreateAlbum();</code>. You'll also need to add the following using statement to the top of the class: <code>using UWPQuickStart.Utils;</code>.</p>
                 </div>
@@ -154,7 +154,7 @@
             </div>
             
             <div class="row">
-                <div class="number_circle" style="margin-top: 5px">3</div>
+                <div class="number_circle" style="margin-top: 5px">4</div>
                 <div class="col-md-7 getting-started-text">
                     <p>In order for us to record the album ID and album delete hash, we'll need to review the response given to use by the Imgur REST API call to create the album. The easiest way for us to do this with the current setup is to just set a breakpoint on the <code>CreateAlbum()</code> method call you just added. To add a breakpoint, you can right click on that line of code, find <strong>Breakpoint</strong> and click <strong>Insert Breakpoint</strong>. Now, press F5 to run the code. Navigate to the <strong>Photos</strong> page in the app by using the hamburger menu.</p>
                 </div>
@@ -168,9 +168,12 @@
             </div>
             
             <div class="row">
-                <div class="number_circle" style="margin-top: 5px">4</div>
-                <div class="col-md-12 getting-started-text">
+                <div class="number_circle" style="margin-top: 5px">5</div>
+                <div class="col-md-7 getting-started-text">
                     <p>The breakpoint should immediately be triggered when you navigate to the <strong>Photos</strong> page. Press F11 to step into the code and the <code>CreateAlbum</code> method should be triggered in the <strong>PhotoStreamUtil.cs</strong> class that we added. Add another breakpoint to the very end of the method - on the curly bracket - and hit F5 to let the code resume. Once the next breakpoint is hit, find your Locals inspector. This is at the bottom of your editor by default, but you can open it via Quick Launch by pressing Ctrl + Q and typing <strong>Locals</strong>. In your Locals inspector, you should see both <strong>response</strong> and <strong>content</strong>. To the right of <strong>content</strong> you should see a magnifying glass. Click that and then click <strong>JSON Visualizer</strong>. Expand the data tab and you will have both your album delete hash and album ID!</p>
+                </div>
+                <div class="col-md-5 getting-started-text">
+                   <img src="/UWPQuickStart/images/online-image-sync/b-step-5.png"/>
                 </div>
             </div>
             
@@ -179,11 +182,8 @@
             </div>
             
             <div class="row">
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                    <img src="/UWPQuickStart/images/online-image-sync/b-step-4.png"/>
-                </div>
-                <div class="col-md-5 getting-started-text">
-                   <img src="/UWPQuickStart/images/online-image-sync/b-step-5.png"/>
                 </div>
             </div>
             
