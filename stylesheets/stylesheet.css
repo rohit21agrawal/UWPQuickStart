@@ -397,8 +397,10 @@ img {
 /*
 ********* Footer ***********
 */
-.footer-container {
+/*.footer-container {*/
+.site-footer {
   background-color: #231E20;
+  width: 100%;
   position: relative;
   z-index: 1; }
 
