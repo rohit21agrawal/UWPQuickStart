@@ -240,16 +240,16 @@ The main SCSS file for everything, yep
   font-style: normal; }
 
 @font-face {
-  font-family: 'Comfortaa-Bold';
-  src: url("../fonts/Comfortaa-Bold.ttf"); }
+  font-family: 'Lato-Bold';
+  src: url("../fonts/Lato-Bold.ttf"); }
 
 @font-face {
-  font-family: 'Comfortaa-Regular';
-  src: url("../fonts/Comfortaa-Regular.ttf"); }
+  font-family: 'Lato-Regular';
+  src: url("../fonts/Lato-Regular.ttf"); }
 
 @font-face {
-  font-family: 'Comfortaa-Light';
-  src: url("../fonts/Comfortaa-Light.ttf"); }
+  font-family: 'Lato-Light';
+  src: url("../fonts/Lato-Light.ttf"); }
 
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -257,7 +257,7 @@ The main SCSS file for everything, yep
   src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.c91726c4.woff2") format("woff2"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
 
 body {
-  font-family: wf_segoe-ui_normal;
+  font-family: Lato-Regular;
   font-size: 10px;
   background-color: white;
   color: black;
@@ -286,18 +286,18 @@ p, span {
   font-size: 1.6em; }
 
 h1 {
-  color: #7BCD33;
-  font-family: "Comfortaa-Bold";
-  font-size: 4em; }
+  color: #F3BA38;
+  font-family: "Lato-Regular";
+  font-size: 48px; }
 
 h2 {
-  color: #989898;
-  font-family: "Comfortaa-Regular";
-  font-size: 3em; }
+  color: #252F3C;
+  font-family: "Lato-Regular";
+  font-size: 36px; }
 
 h3 {
   color: #70835B;
-  font-family: "Comfortaa-Bold";
+  font-family: "Lato-Bold";
   font-size: 2.5em; }
 
 h4, h5, h6 {
@@ -541,11 +541,11 @@ button.btn-invert:hover {
 
 .hero_logo_container .logo_text {
   font-size: 6em;
-  font-family: "Comfortaa-Bold"; }
+  font-family: "Lato-Bold"; }
   .hero_logo_container .logo_text .logo_text_code {
     color: #56ACE2; }
   .hero_logo_container .logo_text .logo_text_push {
-    color: #7BCD33; }
+    color: #1274A9; }
 
 .hero_logo_container .signup-banner {
   padding-top: 8px; }
@@ -827,8 +827,8 @@ button.btn-invert:hover {
   left: -60px; }
 
 .getting_started p {
-  font-size: 1.6em;
-  line-height: 1.8em; }
+  font-size: 20px;
+  line-height: 22px; }
 
 @media (min-width: 992px) {
   .getting_started p {
@@ -851,7 +851,7 @@ button.btn-invert:hover {
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: #FFFF00;
+  background-color: #F3BA38;
   border-radius: 50%;
   margin-top: -0.5em; }
 
@@ -1448,10 +1448,11 @@ article.tabs section h2 {
   transition: all 500ms ease; }
 
 .btn2 {
+  font-size: 20px;
   display: inline-block;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 1.0);
-  background-color: rgba(91, 45, 144, 1.0);
+  background-color: rgba(18, 61, 84, 1.0);
   border-color: rgba(255, 255, 255, 0.2);
   border-style: solid;
   border-width: 1px;
@@ -1463,7 +1464,7 @@ article.tabs section h2 {
 .btn2:hover {
   color: rgba(255, 255, 255, 1.0);
   text-decoration: none;
-  background-color: rgba(80, 52, 110, .8);
+  background-color: rgba(18, 61, 84, .5);
   border-color: rgba(255, 255, 255, 0.3); }
 
 @media screen and (min-width: 64em) {
