@@ -5,6 +5,8 @@ using System;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Notifications;
+using Windows.Data.Xml.Dom;
 
 namespace UWPQuickStart.Views
 {
@@ -29,6 +31,42 @@ namespace UWPQuickStart.Views
             else if (maybeRadioButton.IsChecked == true)
             {
                 finalResponse = "I will try my best.";
+            }
+
+            if (yesRadioButton.IsChecked == true)
+            {
+
+                // setup notification text
+                string TOAST = $@"
+            <toast>
+              <visual>
+                <binding template=""ToastGeneric"">
+                  <text>Event Alarm</text>
+                  <text>Check your calendar for " + App.EventModel.EventName + $@"</text>
+                </binding>
+              </visual>
+              <actions>
+                <action content = ""Done"" arguments=""cancel""/>
+              </actions>
+              <audio src =""ms-winsoundevent:Notification.Reminder""/>
+            </toast>";
+
+                // set when the notification should be shown or demo purposes in 10s
+                var when = DateTime.Now.AddSeconds(10);
+                //var when = App.EventModel.EventStartTime;
+
+                var offset = new DateTimeOffset(when);
+
+                Windows.Data.Xml.Dom.XmlDocument xml = new Windows.Data.Xml.Dom.XmlDocument();
+
+                xml.LoadXml(TOAST);
+
+                // create the notification
+                ScheduledToastNotification toast = new ScheduledToastNotification(xml, offset);
+                Random rnd = new Random();
+                toast.Id = rnd.Next(1, 100000000).ToString();
+
+                ToastNotificationManager.CreateToastNotifier().AddToSchedule(toast);
             }
 
             var emailUri =
