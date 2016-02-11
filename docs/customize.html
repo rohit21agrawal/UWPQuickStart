@@ -130,14 +130,14 @@
                         <div>
                             <button type="button" data-clipboard-text="&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt;" class="btn btn-primary pull-right zeroClipBtn">Copy</button>
                         </div>
-                        <p>&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt;</p>
+                        <p style="font-size: 1.2em"><code>&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt;</code></p>
                     </div>
                 </div>
             </div> 
             <div class="row">
                 <div class="col-md-12 getting-started-text">
                     <h1></h1>
-                    <p><strong>Testing the application should now get rid of the warning that you previously saw.</p>
+                    <p>Testing the application should now get rid of the warning that you previously saw.</p>
                 </div>
             </div>
              <div class="row">
@@ -145,6 +145,31 @@
                 <h1></h1>
             </div>
             
+            <div class="row"> 
+                <div class="number_circle" style="margin-top: 5px">6</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>You might want to change the default set of images that the default app is using to be to your event.
+                    </p>
+                    <p>
+                    In our case, we are going to replace the <strong>heroimage.jpg</strong> in the Assets folder with something more appropriate for a birthday party.
+                    </p>
+                    <p>
+                    We also going to add some static images for the event (hopefully that will get us more RSVPs!). Later, take a look at how to make it a lot more dynamic and fetch the images from some service in the Cloud. One final step is that will need to do if you change the set of images is to update the <strong>InitializePhotoCollection()</strong> method in <strong>PhotoStreamModel.cs</strong> to be something more appropriate.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <div class="well_code">
+                        <div>
+                            <button type="button" data-clipboard-text="public void InitializePhotoCollection()&#10{&#10&#10StreamItems.Clear();&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Cake.jpg&quot;)));&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Balloons.jpg&quot;)));&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Party.jpg&quot;)));&#10}" class="btn btn-primary pull-right zeroClipBtn">Copy</button>
+                        </div>
+                        <p style="font-size: 1.2em"><code>public void InitializePhotoCollection()&#10{&#10&#10StreamItems.Clear();&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Cake.jpg&quot;)));&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Balloons.jpg&quot;)));&#10StreamItems.Add(new PhotoModel(new Uri(&quot;ms-appx:///SamplePhotos/Party.jpg&quot;)));&#10}</code></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h1></h1>
+                <h1></h1>
+            </div>
             
             <span class="doc-fragment-anchor" id=link-1"></span>
             <div class="row">  
