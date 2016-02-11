@@ -15,12 +15,14 @@
     <header role="banner">
 	   <nav class="navbar navbar-default navbar-fixed-top">
                 <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="container-fluid">
                 <div class="collapse navbar-collapse navbar_center" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="home"><a href="/UWPQuickStart/index.html">Home</a></li>
-                        
                         <li class="learn"><a class="active" href="/UWPQuickStart/docs/customize.html">Learn</a></li>
-                        
+                        <li class="started"><a  href="/UWPQuickStart/docs/getting-started.html">Get Started</a></li>
+                        <li class="learn"><a  href="/UWPQuickStart/docs/customize.html">Learn</a></li>
+                        <li class="challenges"><a class="active" href="/UWPQuickStart/docs/challenges/challenges.html">Challenges</a></li>
                         <li class="resources"><a href="/UWPQuickStart/docs/resources.html">Resources</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -37,6 +39,59 @@
         </div>
 	</div>	
 
+    <div class="top_navbar_spacer"></div>
+    
+    <div id="content" class="container main_content">                       
+        <div class="col-md-3 toc-container hidden-sm hidden-xs">
+            <div class="row">
+                
+            </div>                          
+        </div>      
+        <div class="col-md-7 col-md-offset-1">
+            <div class="row">  
+                <header class="doc-header">
+                    <h1 class="doc-title">Tailoring the app for our event</h1>
+                    <!--<ul class="nav" style="display:inline-block;"><li><a class="edit-page-link" style="padding-left:0" href="{{ site.projecturl }}{{ page.relative_path }}" target="_blank"><span class="glyphicon glyphicon-pencil"></span><i>&nbsp;</i>Edit on GitHub</a></li></ul>-->
+                    <p>
+                        In this walkthrough, let’s review the changes you should consider making to the sample before using it for your own event. As an example, we are going to create an app for a Birthday party we hosting for someone who is turning 3! We will take you thru the steps required to submit the app to the Windows Store and send a link to the app to your friends that they can use to download the app to their Windows 10 device with a single click.
+                    </p>
+                </header>  
+            </div>
+            <span class="doc-fragment-anchor" id=link-0"></span>
+            <div class="row">  
+                <h2 id="Updating-the-code">
+                    Updating the Code
+                </h2>
+            </div>
+            <div class="row"> 
+                <div class="col-md-8 getting-started-text">
+                    <p>The first thing we will do is to update the data models that the app is using. Open EventModel.cs, located in the Models folder of the project.</p>
+                    <p><strong>Tip:Because we have centralized all of the data in one location, making a change ripples thru various parts of the UI that uses the same data bindings. For example, the EventName property is used in the home page of the application (EventMainPage.xaml), and in the code that sends out RSVPs (RSVP.xaml.cs).</strong></p>
+                </div>
+                <div class="col-md-2 getting-started-text">
+                    <img src="/UWPQuickStart/images/update_test.png">
+                </div>
+            </div> 
+            <div class="row"> 
+                <div class="col-md-8 getting-started-text">
+                    <p>Change the various properties to the specifics for your event. In this case, we are going to change the EventName from “John’s Band Debut” to “Trisha turns 3!”.</p>
+                </div>
+                <div class="col-md-2 getting-started-text">
+                    <img src="/UWPQuickStart/images/update_test.png">
+                </div>
+            </div> 
+            <span class="doc-fragment-anchor" id=link-1"></span>
+            <div class="row">  
+                <h2 id="Getting-ready-for-store">
+                    Getting the app ready for submission to the Windows Store
+                </h2>
+            </div>
+        </div>           
+    </div>
+    
+    <section class="page-header">
+      <h1 class="project-name">Customize the Sample App</h1>
+    </section>
 
     <section class="main-content">
 
