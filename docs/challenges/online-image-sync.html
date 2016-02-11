@@ -74,7 +74,7 @@
             <div class="row"> 
                 <h1>Share Your Photos</h1>
                 <p>
-                    Now that we have customized the app for our own event, why don’t we make it so that all attendees can view and share photos with other app users? I really don’t want to force all my attendees to register for some service, so let’s use Imgur’s RESTful APIs to implement a way for all users of our app to share images with each other. We’ll take you through all the steps required to create your own anonymous album (anonymous meaning no sign-ins required), implement methods to take or add photos from the device, and upload/download the images from Imgur into the photos page! Just a note, when adding any photos to Imgur this way, they are public for the world to see – but only the users of your app will be able to contribute to the album!
+                    Now that we have customized the app for our own event, why don’t we make it so that all attendees can view and share photos with other app users? I really don’t want to force all my attendees to register for some service, so let’s use Imgur’s RESTful APIs to implement a way for all users of our app to share images with each other. We’ll take you through all the steps required to create your own anonymous album (anonymous meaning no sign-ins required), implement methods to take or add photos from the device, and upload/download the images from Imgur into the photos page! <strong>Just a note</strong>, when adding any photos to Imgur this way, they are public for the world to see – but only the users of your app will be able to contribute to the album!
                 </p>
             </div>
             
@@ -115,6 +115,11 @@
                     <img src="/UWPQuickStart/images/online-image-sync/b-step-1.png" >
                 </div>
             </div>
+            
+            </div> 
+                <div class="row" style="height: 50px">
+            </div>
+            
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">2</div>
                 <div class="col-md-7 getting-started-text">
@@ -125,6 +130,19 @@
                 </div>
             </div>
             
+            </div> 
+                <div class="row" style="height: 50px">
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">2</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Now that we have our Imgur client ID set, the only remaining info we need is an album ID and an album delete hash. The ID is what will let people view the photos, and the delete hash will be our <strong>private</strong> key that will let us (and only us) contribute to the album. To create an album, first open up <storng>PhotoStreamModel.cs</strong> and find the <strong>InitializePhotoCollection</strong> method. Since we're going to be getting all of our images from Imgur going forward, just go ahead and delete the whole contents of the method. Inside of the method, add the following line of code: <code>await PhotoStreamUtil.CreateAlbum();</code>. You'll also need to add the following using statement to the top of the class: <code>using UWPQuickStart.Utils;</code>.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/online-image-sync/b-step-3.png" >
+                </div>
+            </div>
             
             <span class="doc-fragment-anchor" id=link-3"></span>
             <hr id="Update-client-ID-anchor">
