@@ -17,10 +17,10 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <RadioButton x:Name="photoGridViewMode" GroupName="PhotoViewMode" MinWidth="0" Style="{StaticResource PhotosPageViewSelectorStyle}" IsChecked="True" Margin="0,5,5,0" Checked="photoGridViewMode_Checked" ToolTipService.ToolTip="View all Photos">
-                <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="32"/>
+                <Image Source="ms-appx:///Assets/GridView.png" />
             </RadioButton>
             <RadioButton x:Name="photoFlipViewMode" GroupName="PhotoViewMode" MinWidth="0" Style="{StaticResource PhotosPageViewSelectorStyle}" Margin="0,5,10,0" Checked="photoFlipViewMode_Checked" ToolTipService.ToolTip="Flip thru Photos">
-                <TextBlock Text="" FontFamily="Segoe UI Symbol" FontSize="32"/>
+                <Image Source="ms-appx:///Assets/FlipView.png" />
             </RadioButton>
         </StackPanel>
         <Grid x:Name="ContentGrid" Grid.Row="1"/>

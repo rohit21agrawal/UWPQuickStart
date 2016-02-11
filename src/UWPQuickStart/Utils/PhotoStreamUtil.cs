@@ -56,7 +56,10 @@ namespace UWPQuickStart.Utils
             var content = await response.Content.ReadAsStringAsync();
 
             dynamic friendlyContent = JsonConvert.DeserializeObject<dynamic>(content);
-
+            if (friendlyContent.data.Count == null)
+            {
+                return;
+            }
             var imageLinksArray = new string[friendlyContent.data.Count];
             for (var i = 0; i < friendlyContent.data.Count; i++)
             {

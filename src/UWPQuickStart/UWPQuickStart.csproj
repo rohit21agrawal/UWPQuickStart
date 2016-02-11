@@ -130,6 +130,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="Assets\FlipView.png" />
+    <Content Include="Assets\GridView.png" />
     <Content Include="Assets\HeroImage.jpg" />
     <Content Include="Assets\mappin.png" />
     <Content Include="SamplePhotos\SamplePhoto.jpg" />
