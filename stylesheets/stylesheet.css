@@ -402,6 +402,8 @@ img {
   /*background-color: #231E20;*/
   width: 100%;
   /*position: relative;*/
+  text-align: center;
+  font-size: 1.4em;
   margin: 0 auto;
   z-index: 1; }
 
