@@ -303,7 +303,7 @@
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">3</div>
                 <div class="col-md-12 getting-started-text">
-                    <p>Now that we have our buttons, we just need to hook them up to something. You can copy and paste the three methods below at the end of the <strong>Photos.xaml.cs</strong> class. They should follow the <code>PhotoFlipViewMode_Checked</code> method.
+                    <p>Now that we have our buttons, we just need to hook them up to something. You can copy and paste the three methods below at the end of the <strong>Photos.xaml.cs</strong> class. They should follow the <code>PhotoFlipViewMode_Checked</code> method. You'll also need to update the using statements at the top of your class.
                 </div>
             </div>
             <div>
@@ -311,7 +311,19 @@
             </div>
              <div class="row">
                 <div class="col-md-12 getting-started-text">
-                    <pre class="prettyprint"><code class="language-cs">private async void CameraButton_Click(object sender, RoutedEventArgs e){
+                    <pre class="prettyprint"><code class="language-cs">using System;
+using System.ComponentModel;
+using System.IO;
+using Windows.Media.Capture;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using UWPQuickStart.Models;
+using UWPQuickStart.Utils;
+...
+private async void CameraButton_Click(object sender, RoutedEventArgs e){
     CameraCaptureUI captureUI = new CameraCaptureUI();
     captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
     StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
