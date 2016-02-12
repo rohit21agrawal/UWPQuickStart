@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/UWPQuickStart/stylesheets/bootstrap.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/UWPQuickStart/stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/UWPQuickStart/stylesheets/github-light.css" media="screen">
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
   </head>
 
   <body>
@@ -95,9 +96,7 @@
                 <div class="col-md-12 getting-started-text">
                     <p>The first thing we have to do is open up <strong>RSVP.xaml.cs</strong> from the solution explorer.</p>
                     <p>Find the following event handler:</p>
-                </div>
-                <div class="col-md-5">
-                    <p><code>private async void sendButtonHandler(object sender, RoutedEventArgs e)</code></p>
+                    <pre class="prettyprint"><code class="language-cs">private async void sendButtonHandler(object sender, RoutedEventArgs e)</code></pre>
                 </div>
             </div>
 
@@ -112,7 +111,10 @@
                     <p>This will remind the user of the event.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/toast/ischecked.png">
+                    <pre class="prettyprint"><code class="language-cs">if (yesRadioButton.IsChecked == true)
+{
+...
+}</code></pre>
                 </div>
             </div>
 
@@ -122,11 +124,24 @@
 
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">3</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>Next we want to configure the notification text which is shown in the toast. This is specified as XML within a string:</p>
                 </div>
-                <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/toast/toastxml.png">
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-xml">// setup notification text
+string TOAST = $@&quot;
+&lt;toast&gt;
+    &lt;visual&gt;
+        &lt;binding template=&quot;&quot;ToastGeneric&quot;&quot;&gt;
+            &lt;text&gt;Event Alarm&lt;/text&gt;
+            &lt;text&gt;Check your calendar for &quot; + App.EventModel.EventName + $@&quot;&lt;/text&gt;
+        &lt;/binding&gt;
+    &lt;/visual&gt;
+    &lt;actions&gt;
+        &lt;action content = &quot;&quot;Done&quot;&quot; arguments=&quot;&quot;cancel&quot;&quot;/&gt;
+    &lt;/actions&gt;
+    &lt;audio src =&quot;&quot;ms-winsoundevent:Notification.Reminder&quot;&quot;/&gt;
+&lt;/toast&gt;&quot;;</code></pre>
                 </div>
             </div>
 
@@ -136,11 +151,15 @@
 
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">4</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>Now we want to set when the toast should appear. For demo purposes you can set this to 10 seconds. To make it work for real uncomment out the EventStartTime line:</p>
                 </div>
-                <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/toast/when.png">
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">// set when the notification should be shown or demo purposes in 10s
+var when = DateTime.Now.AddSeconds(10);
+
+//var when = App.EventModel.EventStartTime;
+var offset = new DateTimeOffset(when);</code></pre>
                 </div>
             </div>
 
@@ -150,11 +169,20 @@
 
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">5</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>Finally we use ScheduledToastNotification to create the toast itself</p>
                 </div>
-                <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/toast/create.png">
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">Windows.Data.Xml.Dom.XmlDocument xml = new Windows.Data.Xml.Dom.XmlDocument();
+
+xml.LoadXml(TOAST);
+
+// create the notification
+ScheduledToastNotification toast = new ScheduledToastNotification(xml, offset);
+Random rnd = new Random();
+toast.Id = rnd.Next(1, 100000000).ToString();
+
+ToastNotificationManager.CreateToastNotifier().AddToSchedule(toast);</code></pre>
                 </div>
             </div>
         </div>
