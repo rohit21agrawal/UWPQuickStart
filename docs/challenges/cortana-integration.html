@@ -139,7 +139,7 @@
     await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);</code></pre>
                 </div>
             
-                <div class="col-md-12">
+                <div class="col-md-12   getting-started-text">
                     <p><strong>Tip: </strong>You’ll need to make the event handler async. You’ll also need to add a using command for the VoiceCommandDefinitionManager (It’s in Windows.ApplicationModel.VoiceCommands)</p>
                 </div>
             </div>
@@ -169,14 +169,418 @@
             
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">1</div>
-                <div class="col-md-7 getting-started-text">
-                    <p>Now that we have our Imgur API Client Key, we can download the source code that will contain the Imgur interaction methods. You can find that code in our repo in the <strong>PhotoStreamUtil.cs</strong> class <a href="https://github.com/Microsoft/UWPQuickStart/blob/imgur-integration/src/UWPQuickStart/Utils/PhotoStreamUtil.cs">here</a>. Go ahead and download this file and add it to your utils folder in your project. You can right click on <strong>Utils</strong>, click <strong>Add</strong> and then <strong>Existing item...</strong> Then select the file you just downloaded.</p>
+                <div class="col-md-12 getting-started-text">
+                    <p>That’s pretty cool already, but let’s go another step. If I’m at my event and I want to see the photos, maybe I don’t want to have to navigate. Let’s have Cortana jump right to the photostream for me.
+                    </p>
+                    <p>First, I need to add a new command, so here’s the code I’m using:
+                    </p>
                 </div>
                 
-                <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/online-image-sync/b-step-1.png">
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-xml">&lt;Command Name=&quot;Photos&quot;&gt;
+    &lt;Example&gt; Photos  &lt;/Example&gt;
+    &lt;ListenFor&gt; Photos &lt;/ListenFor&gt;
+    &lt;Feedback&gt;  Let&rsquo;s look at some pictures. &lt;/Feedback&gt;
+    &lt;Navigate/&gt;
+&lt;/Command&gt;</code></pre>
                 </div>
             </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">2</div>
+                <div class="col-md-12 getting-started-text">
+                    <p>We’ve now got two commands, GetStarted and Photos. Unfortunately, our app doesn’t know what to do if Cortana passes either of these commands to us. It’s just going to launch and let us deal with it.
+                    </p>
+                    <p>Whenever an app starts, either the OnLaunched or OnActivated event will be fired. OnLaunched will fire if the app is launched “normally”. This includes clicking on the tile or if Cortana launches it without a command. However, if Cortana launches the app with a command, like the way we’ve been doing it, the OnActivated event will fire instead.
+                    </p>
+                    <p>The default template has all of the initialization code in OnLaunched, but we need that same code to execute when we’re Activated instead. So, we need to refactor that code. To save ourselves a bit of complication in the refactor, locate the line with the call to rootFrame.Navigate(typeof(EventMainPage), e). Remove the e parameter. The chunk of code should now look like this:
+                    </p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">if (rootFrame.Content == null)
+{
+    // When the navigation stack isn't restored navigate to the first page,
+    // configuring the new page by passing required information as a navigation
+    // parameter
+    rootFrame.Navigate(typeof(EventMainPage));
+}</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">3</div>
+                <div class="col-md-12 getting-started-text">
+                    <p>Great, now you need to select the contents of the OnLaunched handler, starting with the two lines we added to register the voice commands through the call to Window.Current.Activate(). With those lines selected, choose Edit / Refactor / Extract Method. This will move all of this code to its own method. Now we can call into that from our OnActivated event handler.
+                    </p>
+                    <p>Your code should look like this now:
+                    </p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">protected async override void OnLaunched(LaunchActivatedEventArgs e)
+{
+    await InitializeFrame();
+}
+
+private async System.Threading.Tasks.Task InitializeFrame()
+{
+    …
+}</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">4</div>
+                <div class="col-md-12 getting-started-text">
+                    <p>Great, now we’ve got what we need to create our OnActivated event handler. Put your cursor on a line inside the App.xaml.cs that isn’t in a method (but is inside the class). Start typing “protected override void” and Intellisense should come up with a list of possible event handlers. OnActivated should be in the list (for me, it’s at the top). Just hit enter and it’ll put the stub into your code for you.
+                    </p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">protected override void OnActivated(IActivatedEventArgs e)
+{
+    base.OnActivated(e);
+}</code></pre>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <p>We need to call the method to initialize our Frame, so just add that call. You’ll also need to make this event handler async as well.
+                    </p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">protected async override void OnActivated(IActivatedEventArgs e)
+{
+    await InitializeFrame();
+    base.OnActivated(e);
+}</code></pre>
+                </div>
+            </div>
+            
+            <span class="doc-fragment-anchor" id="link-3"></span>
+            <hr id="Hooking-up-navigation-on-launch-anchor">
+            <div class="row" id="Hooking-up-navigation-on-launch">
+                <h2>
+                    Hooking up Navigation on Launch
+                </h2>
+                <h1></h1>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">1</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>At this point, I realize that the event as it exists doesn’t have the ability to navigate to a page at launch OTHER than the start page. Well, that’s not what we had in mind, but we want to extend that a bit. So, we’re going to have to make a quick tweak to the code.</p>
+                    <p>Open up EventMainPage.xaml.cs. Near the bottom is an event handler for NavMenu_ItemClickHandler. That handler does three things and the second is to actually navigate. We need to extract that line to its own method. So, highlight that line and again, choose Edit / Refactor / ExtractMethod. I called it SwitchToWindow. You may need to tweak it slightly, but we want our method to take an argument of type “Type”. We’ll use this to navigate to the page we want later.</p>
+                    <p>Your code should look like this:</p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">private void NavMenu_ItemClickHandler(object sender, ItemClickEventArgs e)
+{
+    var destPage = (e.ClickedItem as NavMenuItem)?.DestPage;
+    SwitchToWindow(destPage);
+    rootSplitView.IsPaneOpen = false;
+}
+
+public void SwitchToWindow(System.Type desiredPage)
+{
+    AppNavigationUtil.SetSplitViewContent(rootSplitView, desiredPage, true);
+}</code></pre>
+                </div>
+                
+                <div class="col-md-12  getting-started-text">
+                    <p>Awesome, now we’re ready to finish our OnActivated event handler. By the time we’re done, we want to do three things. In order, we want to figure out which command Cortana gave us, Initialize our Frame and finally, navigate to the Photos page if we got the “Photo” command.</p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">2</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>When our app is started with a voice command, the args passed to us are actually of the type VoiceCommandActivatedEventArgs. Once we know that we were activated with a voice command, we can cast the args to the right type. We can figure out how we were activated with the “Kind” property which comes from the IActivatedEventArgs interface.</p>
+                    <p>Put all this together and your code will end up looking like this:</p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">protected async override void OnActivated(IActivatedEventArgs args)
+{
+    base.OnActivated(args);
+
+    if (args.Kind != ActivationKind.VoiceCommand)
+    {
+        return;
+    }
+
+    var EventArgs = args as VoiceCommandActivatedEventArgs;
+    SpeechRecognitionResult ActivateResult = EventArgs.Result;
+    string CommandName = ActivateResult.RulePath[0];
+}</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">3</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>When our app is started with a voice command, the args passed to us are actually of the type VoiceCommandActivatedEventArgs. Once we know that we were activated with a voice command, we can cast the args to the right type. We can figure out how we were activated with the “Kind” property which comes from the IActivatedEventArgs interface.</p>
+                    <p>Put all this together and your code will end up looking like this:</p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">protected async override void OnActivated(IActivatedEventArgs args)
+{
+    base.OnActivated(args);
+
+    if (args.Kind != ActivationKind.VoiceCommand)
+    {
+        return;
+    }
+
+    var EventArgs = args as VoiceCommandActivatedEventArgs;
+    SpeechRecognitionResult ActivateResult = EventArgs.Result;
+    string CommandName = ActivateResult.RulePath[0];
+}</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">4</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>Great, now we’ve got the CommandName and we can just switch on that. Once we know which command we’re using, we pass the right type to SwitchToWindow and we’re golden. The switch statement is pretty simple…</p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">switch (CommandName)
+{
+    case "GetStarted":
+        {
+            // We don't want to do anything special in this case
+            break;
+        }
+    case "Photos":
+        {
+            break;
+        }
+    default:
+        {
+            // We got a command we don't recognize, but for now we'll just ignore
+            break;
+        }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">5</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>Great. Now we want to call SwitchToWindow with the right type. I approached this a couple ways, but the easiest way I could think of was to assume we wanted to go to the EventHome unless I hear otherwise. So, just before the switch, I’m going to initialize a variable with typeof(EventHome) as a value and change it when I need to. Now my code looks like this:</p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">Type StartingPage = typeof(Views.EventHome);
+
+switch (CommandName)
+{
+    case "GetStarted":
+        {
+            // We don't want to do anything special in this case
+            break;
+        }
+    case "Photos":
+        {
+            StartingPage = typeof(Views.Photos);
+            break;
+        }
+    default:
+        {
+            // We got a command we don't recognize, but for now we'll just ignore
+            break;
+        }
+}</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">6</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>Let’s pass that StartingPage to SwitchToWindow and we’re done. Unfortunately, SwitchToWindow is on the Root Frame. We can get that the long way, but since our InitializeFrame method uses the rootFrame, let’s just return it. All I need to do is modify the signature of the InitializeFrame method to return the frame, and I can use that.</p>
+                    <p>Change the InitializeFrame method signature to this:</p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">private async System.Threading.Tasks.Task&lt;Frame&gt; InitializeFrame()</code></pre>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <p>Notice the &lt;Frame&gt; at the end of the return type. Now at the bottom, you can add a simple “return rootFrame” to get that object out.</p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">7</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>Back to our OnActivated event handler, let’s call InitializeFrame and capture the Frame on the way out. Add these lines after the switch:</p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">Frame rootFrame = await InitializeFrame();
+(rootFrame.Content as EventMainPage).SwitchToWindow(StartingPage);</code></pre>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <p>The first line grabs the rootFrame and the second line casts its Content as our EventMainPage. Once we’ve got that, we can call SwitchToWindow and we’re in business.</p>
+                </div>
+                
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">8</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>Since this has been a bit disjointed, here are the key methods that we’ve updated so far:</p>
+                </div>
+                
+                <div class="col-md-12 getting-started-text">
+                    <pre class="prettyprint"><code class="language-cs">/// &lt;summary&gt;
+///     Invoked when the application is launched normally by the end user.  Other entry points
+///     will be used such as when the application is launched to open a specific file.
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;e&quot;&gt;Details about the launch request and process.&lt;/param&gt;
+protected async override void OnLaunched(LaunchActivatedEventArgs e)
+{
+#if DEBUG
+    if (Debugger.IsAttached)
+    {
+        DebugSettings.EnableFrameRateCounter = false;
+    }
+#endif
+    await InitializeFrame();
+}
+
+private async System.Threading.Tasks.Task&lt;Frame&gt; InitializeFrame()
+{
+    var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri(&quot;ms-appx:///CortanaRules.xml&quot;));
+    await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
+
+    var rootFrame = Window.Current.Content as Frame;
+
+    // Do not repeat app initialization when the Window already has content,
+    // just ensure that the window is active
+    if (rootFrame == null)
+    {
+        // Create a Frame to act as the navigation context and navigate to the first page
+        rootFrame = new Frame();
+
+        rootFrame.NavigationFailed += OnNavigationFailed;
+
+        // Place the frame in the current Window
+        Window.Current.Content = rootFrame;
+    }
+
+    if (rootFrame.Content == null)
+    {
+        // When the navigation stack isn't restored navigate to the first page,
+        // configuring the new page by passing required information as a navigation
+        // parameter
+        rootFrame.Navigate(typeof(EventMainPage));
+    }
+    // Ensure the current window is active
+    Window.Current.Activate();
+    return rootFrame;
+}
+
+protected async override void OnActivated(IActivatedEventArgs args)
+{
+    base.OnActivated(args);
+
+    if (args.Kind != ActivationKind.VoiceCommand)
+    {
+        return;
+    }
+
+    var EventArgs = args as VoiceCommandActivatedEventArgs;
+    SpeechRecognitionResult ActivateResult = EventArgs.Result;
+    string CommandName = ActivateResult.RulePath[0];
+    string textSpoken = ActivateResult.Text;
+    Type StartingPage = typeof(Views.EventHome);
+
+    switch (CommandName)
+    {
+        case &quot;GetStarted&quot;:
+            {
+                // We don't want to do anything special in this case
+                break;
+            }
+        case &quot;Photos&quot;:
+            {
+                StartingPage = typeof(Views.Photos);
+                break;
+            }
+        default:
+            {
+                // We got a command we don't recognize, but for now we'll just ignore
+                break;
+            }
+    }
+
+    Frame rootFrame = await InitializeFrame();
+    (rootFrame.Content as EventMainPage).SwitchToWindow(StartingPage);
+}</code></pre>
+                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 50px"/>
+            </div>
+            
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">9</div>
+                <div class="col-md-12  getting-started-text">
+                    <p>With all of this, let’s run our app and get everything registered correctly. Press F5 (or Play) and the app will run. If you set a breakpoint in OnLaunched, you can watch everything get initialized. When I started doing this, I ran into some glitches, and every time I hit Play from Visual Studio, I never got the OnActivated event firing. Well, that’s because a launch from VS is considered “Standard”, so that event never triggers.</p>
+                    <p>Since I wanted to debug the Activated experience, I didn’t know how to tell VS to launch the app as if from Cortana. Turns out that VS has me covered. Right click the project and pick the properties. Under “Debug”, I can choose an option to “Not launch, but debug on launch”. Click that on and hit Play.</p>
+                    <p>Now everything is deployed, but my app hasn’t started. Put a breakpoint in OnActivated so we can see everything do what it’s supposed to. Click on Cortana and say “Event Register”. MEvent launches and the debugger kicks in. If everything is set up right, you’ll hit that breakpoint and now you can debug.</p>
+                    <p>Awesome. Close MEvent and you’ll see that VS doesn’t stop. Click Cortana and say “Event photos”. There we go. </p>
+                </div>
+            </div>
+            
         </div>
     </div>
  </div>
