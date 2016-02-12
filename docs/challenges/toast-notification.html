@@ -28,119 +28,124 @@
 	   </nav>				   		
     </header>
     
-        <div class="top_navbar_spacer"></div>	
+    <div class="top_navbar_spacer"></div>	
 
      <div id="content" class="container main_content">                           
          <div class="col-md-4">
-            <div class="row" style="position: fixed;">              
+            <div class="row" style="position: fixed;">     
+                         
                 <div class="col-md-10" style="margin-left: 0px">
                     <h2 class="site-toc-title">Table of Contents</h2>
-                    <ul class="site-toc">
-                        <li>
-                            <a class="this-page" href="/UWPQuickStart/docs/customize.html">
-                                Customize the App
-                            </a>
-                        </li>
-                        <li>
-                            <a class="this-page" href="/UWPQuickStart/docs/challenges/toast-notification.html">
-                                Add Toast Notifcation
-                            </a>
-                            <div id="page-toc" class="page-toc">
-                            </div>
-                        </li>        
-                    </ul>
-                </div>
+                        <ul class="site-toc">
+                            <li>
+                                <a class="this-page" href="/UWPQuickStart/docs/challenges/toast-notification.html">Toast Notifications
+                                </a>
+                                <div id="page-toc" class="page-toc">
+                                    <ul>
+                                        <li>
+                                            <a href="/UWPQuickStart/docs/challenges/toast-notification.html#Add-toast-notification-anchor">Add a Toast Notification to your app
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="this-page" href="/UWPQuickStart/docs/challenges/online-image-sync.html">Share Your Photos
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 <div class="site-toc-container">
                 </div>
             </div>
         </div> 
 
-    <span class="doc-fragment-anchor" id=link-0"></span>
-    <div class="col-md-8">
-        <div class="row">
-            <h1>
-                Toast Notifications
-            </h1>
-            <p>
-                ADD DESCRIPTION OF TOAST NOTIFICATION
-            </p>
-        </div>
-        
-        <hr id="Add-toast-notification-anchor">
-        <div class="row">
-            <h2 id="Add-toast-notification">
-                Add a Toast Notification to your app
-            </h2>
-            <h1></h1>
-        </div>
-        
-        
-        <div class="row">
-            <div class="number_circle" style="margin-top: 5px">1</div>
-            <div class="col-md-12 getting-started-text">
-                <p>The first thing we have to do is open up RSVP.xaml.cs from the solution explorer.</p>
-                <p>Find the following event handler :</p>
-                <p><code>private async void sendButtonHandler(object sender, RoutedEventArgs e)<code></p>
+        <span class="doc-fragment-anchor" id=link-0"></span>
+        <div class="col-md-8">
+            <div class="row">
+                <h1>
+                    Toast Notifications
+                </h1>
+                <p>
+                    How to add a pop up toast notifcation scheduled to an event
+                </p>
             </div>
-        </div>
         
-        <div> 
-        	<div class="row" style="height: 50px">
-        </div>
+            <hr id="Add-toast-notification-anchor">
+            <div class="row">
+                <h2 id="Add-toast-notification">
+                    Add a Toast Notification to your app
+                </h2>
+                <h1></h1>
+            </div>
+        
+        
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">1</div>
+                <div class="col-md-12 getting-started-text">
+                    <p>The first thing we have to do is open up RSVP.xaml.cs from the solution explorer.</p>
+                    <p>Find the following event handler :</p>
+                    <p><code>private async void sendButtonHandler(object sender, RoutedEventArgs e)</code></p>
+                </div>
+            </div>
+        
+            <div> 
+                <div class="row" style="height: 50px">
+            </div>
+                
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">2</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>We now want to add a toast notification that will pop up when the event is scheduled by the user.</p>
+                    <p>This will remind the user of the event.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/toast/ischecked.png">
+                </div>
+            </div>
+        
+            <div> 
+                <div class="row" style="height: 50px">
+            </div>
+
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">3</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Next we want to configure the notification text which is shown in the toast. This is specified as XML within a string :</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/toast/toastxml.png">
+                </div>
+            </div>
+        
+            <div> 
+                <div class="row" style="height: 50px">
+            </div>
+
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">4</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Now we want to set when the toast should appear. For demo purposes you can set this to 10 seconds. To make it work for real uncomment out the EventStartTime line below :</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/toast/when.png">
+                </div>
+            </div>
             
-        <div class="row">
-            <div class="number_circle" style="margin-top: 5px">2</div>
-            <div class="col-md-7 getting-started-text">
-                <p>We now want to add a toast notification that will pop up when the event is scheduled by the user.</p>
-                <p>This will remind the user of the event.</p>
+            <div> 
+                <div class="row" style="height: 50px">
             </div>
-            <div class="col-md-5">
-                <img src="/UWPQuickStart/images/toast/ischecked.png">
-            </div>
-        </div>
-        
-        <div> 
-        	<div class="row" style="height: 50px">
-        </div>
 
-        <div class="row">
-            <div class="number_circle" style="margin-top: 5px">3</div>
-            <div class="col-md-7 getting-started-text">
-                <p>Next we want to configure the notification text which is shown in the toast. This is specified as XML within a string :</p>
-            </div>
-            <div class="col-md-5">
-                <img src="/UWPQuickStart/images/toast/toastxml.png">
-            </div>
-        </div>
-        
-        <div> 
-        	<div class="row" style="height: 50px">
-        </div>
-
-        <div class="row">
-            <div class="number_circle" style="margin-top: 5px">4</div>
-            <div class="col-md-7 getting-started-text">
-                <p>Now we want to set when the toast should appear. For demo purposes you can set this to 10 seconds. To make it work for real uncomment out the EventStartTime line below :</p>
-            </div>
-            <div class="col-md-5">
-                <img src="/UWPQuickStart/images/toast/when.png">
+            <div class="row">
+                <div class="number_circle" style="margin-top: 5px">5</div>
+                <div class="col-md-7 getting-started-text">
+                    <p>Finally we use ScheduledToastNotification to create the toast itself</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="/UWPQuickStart/images/toast/create.png">
+                </div>
             </div>
         </div>
-        
-        <div> 
-        	<div class="row" style="height: 50px">
-        </div>
-
-        <div class="row">
-            <div class="number_circle" style="margin-top: 5px">5</div>
-            <div class="col-md-7 getting-started-text">
-                <p>Finally we use ScheduledToastNotification to create the toast itself</p>
-            </div>
-            <div class="col-md-5">
-                <img src="/UWPQuickStart/images/toast/create.png">
-            </div>
-        </div>
-	
 	</div>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/Microsoft/MEvent">MEvent</a> is maintained by <a href="https://github.com/Microsoft">Microsoft</a>.</span>

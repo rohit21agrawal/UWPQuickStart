@@ -405,7 +405,8 @@ img {
   text-align: center;
   font-size: 1em;
   margin: 0 auto;
-  z-index: 1; }
+  z-index: 1;
+  padding-bottom: 0.5cm;  }
 
 #footer {
   color: #989898;
