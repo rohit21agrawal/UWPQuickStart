@@ -81,6 +81,8 @@ namespace UWPQuickStart.Views
             captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
 
             StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+            SavePhoto(photo);
         }
 
         private async void AddPhotoButton_Click(object sender, RoutedEventArgs e)
