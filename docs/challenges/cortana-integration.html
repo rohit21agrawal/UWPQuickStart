@@ -576,7 +576,7 @@ protected async override void OnActivated(IActivatedEventArgs args)
                 <div class="col-md-12  getting-started-text">
                     <p>With all of this, let’s run our app and get everything registered correctly. Press F5 (or Play) and the app will run. If you set a breakpoint in OnLaunched, you can watch everything get initialized. When I started doing this, I ran into some glitches, and every time I hit Play from Visual Studio, I never got the OnActivated event firing. Well, that’s because a launch from VS is considered “Standard”, so that event never triggers.</p>
                     <p>Since I wanted to debug the Activated experience, I didn’t know how to tell VS to launch the app as if from Cortana. Turns out that VS has me covered. Right click the project and pick the properties. Under “Debug”, I can choose an option to “Not launch, but debug on launch”. Click that on and hit Play.</p>
-                    <p>Now everything is deployed, but my app hasn’t started. Put a breakpoint in OnActivated so we can see everything do what it’s supposed to. Click on Cortana and say “Event Register”. MEvent launches and the debugger kicks in. If everything is set up right, you’ll hit that breakpoint and now you can debug.</p>
+                    <p>Now everything is deployed, but my app hasn’t started. Put a breakpoint in OnActivated so we can see everything do what it’s supposed to. Click on Cortana and say “Event Register”. Your app launches and the debugger kicks in. If everything is set up right, you’ll hit that breakpoint and now you can debug.</p>
                     <p>Awesome. Close the app and you’ll see that VS doesn’t stop. Click Cortana and say “Event photos”. There we go. </p>
                 </div>
             </div>
