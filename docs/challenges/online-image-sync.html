@@ -121,30 +121,35 @@
             
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">2</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>Once <strong>PhotoStreamUtil.cs</strong> is a part of your project, go ahead and open it up to view the code. At the top of the class, you'll notice there are three private string constants that are missing the right information. We can already fill in one piece of information though - the <strong>ImgurApiClientId</strong> is something that we got when we registered our application with Imgur. Take the <strong>client_id</strong> provided when you registered with Imgur and copy and paste it to be the value of the <strong>ImgurApiClientId</strong> string.</p>
                 </div>
-                <div class="col-md-5">
+            </div>
+                
+            
+            <div> 
+                <div class="row" style="height: 10px"/>
+            </div>
+            
+            <div>
+                <div class="col-md-12">
                     <img src="/UWPQuickStart/images/online-image-sync/b-step-2.png" >
                 </div>
             </div>
             
             <div> 
-                <div class="row" style="height: 50px">
+                <div class="row" style="height: 50px"/>
             </div>
             
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">3</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>Now that we have our Imgur client ID set, the only remaining info we need is an album ID and an album delete hash. The ID is what will let people view the photos, and the delete hash will be our <strong>private</strong> key that will let us (and only us) contribute to the album. To create an album, first open up <storng>PhotoStreamModel.cs</strong> and find the <strong>InitializePhotoCollection</strong> method. Since we're going to be getting all of our images from Imgur going forward, just go ahead and delete the whole contents of the method. Inside of the method, add the following line of code: <code>await PhotoStreamUtil.CreateAlbum();</code>. Since this is an asynchronous method, you'll also need to add an async identifier to the method signature - it should now be: <code>public async void InitializePhotoCollection()</code>. Finally you'll' need to add the following using statement to the top of the class: <code>using UWPQuickStart.Utils;</code>.</p>
-                </div>
-                <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/online-image-sync/b-step-3.png" >
                 </div>
             </div>
             
             <div> 
-                <div class="row" style="height: 50px">
+                <div class="row" style="height: 50px"/>
             </div>
             
             <div class="row">
@@ -158,7 +163,7 @@
             </div>
             
             <div> 
-                <div class="row" style="height: 50px">
+                <div class="row" style="height: 50px"/>
             </div>
             
             <div class="row">
@@ -172,7 +177,7 @@
             </div>
             
             <div> 
-                <div class="row" style="height: 10px">
+                <div class="row" style="height: 10px"/>
             </div>
             
             <div class="row">
@@ -182,7 +187,7 @@
             </div>
             
             <div> 
-                <div class="row" style="height: 50px">
+                <div class="row" style="height: 50px"/>
             </div>
             
              <div class="row">
@@ -214,7 +219,7 @@
             </div>
             
             <div> 
-                <div class="row" style="height: 50px">
+                <div class="row" style="height: 50px"/>
             </div>
             
              <div class="row">
@@ -236,7 +241,7 @@
             </div>
 
             <div> 
-                <div class="row" style="height: 10px">
+                <div class="row" style="height: 10px"/>
             </div>
             
              <div class="row">
@@ -246,7 +251,7 @@
             </div>
             
             <div> 
-                <div class="row" style="height: 50px">
+                <div class="row" style="height: 50px"/>
             </div>
             
              <div class="row">
@@ -256,7 +261,7 @@
                 </div>
             </div>
             <div> 
-                <div class="row" style="height: 10px">
+                <div class="row" style="height: 10px"/>
             </div>
              <div class="row">
                 <div class="col-md-12 getting-started-text">
@@ -265,7 +270,7 @@
             </div>
             
             <div> 
-                <div class="row" style="height: 50px">
+                <div class="row" style="height: 50px"/>
             </div>
             
             <div class="row">
