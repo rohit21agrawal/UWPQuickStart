@@ -87,13 +87,13 @@
                 </p>
             </div>
 			<div class="row">
-                <div><p>Here is the link to download the solution for this feature.</p></div>	
+                <!--div><p>Here is the link to download the solution for this feature.</p></div>	
                 
                 <div class="row">		
                     <div class="col-md-8"></div>
-                    <div class="col-md-4">
-                        <a class="btn2" style="text-align: center; min-width:11.5em"           href="https://github.com/Microsoft/UWPQuickStart/archive/imgur-integration.zip">Download zip</a>
-                    </div>	
+                    <div class="col-md-4"-->
+                        <a class="btn2" style="text-align: center; min-width:11.5em"           href="https://github.com/Microsoft/UWPQuickStart/archive/imgur-integration.zip">Download Code</a>
+                <!--/div-->	
                 </div>
 			</div>
 
@@ -118,7 +118,8 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <img src="/UWPQuickStart/images/online-image-sync/a-step-1.png"/>
+					<a href="http://microsoft.github.io/UWPQuickStart/images/online-image-sync/a-step-1.png" target="_blank"><img src="/UWPQuickStart/images/online-image-sync/a-step-1.png"/></a>
+
                 </div>
             </div>
 
@@ -136,7 +137,7 @@
                     <p>Now that we have our Imgur API Client Key, we can download the source code that will contain the Imgur interaction methods. You can find that code in our repo in the <strong>PhotoStreamUtil.cs</strong> class <a href="https://github.com/Microsoft/UWPQuickStart/blob/imgur-integration/src/UWPQuickStart/Utils/PhotoStreamUtil.cs">here</a>. Go ahead and download this file and add it to your utils folder in your project. You can right click on <strong>Utils</strong>, click <strong>Add</strong> and then <strong>Existing item...</strong> Then select the file you just downloaded. Alternatively, add a new class named <strong>PhotoStreamUtil.cs</strong> and copy and paste the code in.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/online-image-sync/b-step-1.png" >
+                    <a href="http://microsoft.github.io/UWPQuickStart/images/online-image-sync/b-step-1.png" target="_blank"><img src="/UWPQuickStart/images/online-image-sync/b-step-1.png" ></a>
                 </div>
             </div>
 
@@ -188,7 +189,7 @@
                     <p>In order for us to record the album ID and album delete hash, we'll need to review the response given to use by the Imgur REST API call to create the album. The easiest way for us to do this with the current setup is to just set a breakpoint on the <code>CreateAlbum()</code> method call you just added. To add a breakpoint, you can right click on that line of code, find <strong>Breakpoint</strong> and click <strong>Insert Breakpoint</strong>. Now, press F5 to run the code. Navigate to the <strong>Photos</strong> page in the app by using the hamburger menu.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/online-image-sync/b-step-7.png">
+                    <a href="http://microsoft.github.io/UWPQuickStart/images/online-image-sync/b-step-7.png target="_blank"><img src="/UWPQuickStart/images/online-image-sync/b-step-7.png"></a>
                 </div>
             </div>
 
@@ -202,7 +203,7 @@
                     <p>The breakpoint should immediately be triggered when you navigate to the <strong>Photos</strong> page. Press F11 to step into the code and the <code>CreateAlbum</code> method should be triggered in the <strong>PhotoStreamUtil.cs</strong> class that we added. Add another breakpoint to the very end of the method - on the curly bracket - and hit F5 to let the code resume. Once the next breakpoint is hit, find your Locals inspector. This is at the bottom of your editor by default, but you can open it via Quick Launch by pressing Ctrl + Q and typing <strong>Locals</strong>. In your Locals inspector, you should see both <strong>response</strong> and <strong>content</strong>. To the right of <strong>content</strong> you should see a magnifying glass. Click that and then click <strong>JSON Visualizer</strong>. Expand the data tab and you will have both your album delete hash and album ID!</p>
                 </div>
                 <div class="col-md-5">
-                   <img src="/UWPQuickStart/images/online-image-sync/b-step-5.png"/>
+                   <a href="http://microsoft.github.io/UWPQuickStart/images/online-image-sync/b-step-5.png" target="_blank"><img src="/UWPQuickStart/images/online-image-sync/b-step-5.png"/></a>
                 </div>
             </div>
 
@@ -212,7 +213,7 @@
 
             <div class="row">
                 <div class="col-md-12 getting-started-text">
-                   <img src="/UWPQuickStart/images/online-image-sync/b-step-4.png"/>
+                   <a href="http://microsoft.github.io/UWPQuickStart/images/online-image-sync/b-step-4.png" target="_blank"><img src="/UWPQuickStart/images/online-image-sync/b-step-4.png"/></a>
                 </div>
             </div>
 
@@ -376,7 +377,7 @@ private async void SavePhoto(StorageFile photo)
                     <p>Now run the app! You should be able to add photos from your device or take photos with your device's camera via the command bar at the bottom. These photos will automatically upload to your  anonymous Imgur album. After the upload has completed, all users of your application should be able to see the photos!</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/online-image-sync/c-step-4.png"/>
+                    <a href="http://microsoft.github.io/UWPQuickStart/images/online-image-sync/c-step-4.png" target="_blank"><img src="/UWPQuickStart/images/online-image-sync/c-step-4.png"/></a>
                 </div>
             </div>
 			<!--hr id="Download-Solution-anchor">
