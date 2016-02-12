@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/UWPQuickStart/stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/UWPQuickStart/stylesheets/github-light.css" media="screen">
   </head>
-  
+
   <body>
     <header role="banner">
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -25,13 +25,13 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
-	   </nav>				   		
+	   </nav>
     </header>
-    <div class="top_navbar_spacer"></div>	
-    
-     <div id="content" class="container main_content">                           
+    <div class="top_navbar_spacer"></div>
+
+     <div id="content" class="container main_content">
          <div class="col-md-4">
-            <div class="row" style="position: fixed;">              
+            <div class="row" style="position: fixed;">
                 <div class="col-md-10" style="margin-left: 0px">
                     <h2 class="site-toc-title">Table of Contents</h2>
                     <ul class="site-toc">
@@ -57,7 +57,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li> 
+                        </li>
                         <li>
                             <a class="this-page" href="/UWPQuickStart/docs/challenges/toast-notification.html">
                                 Add Toast Notifications
@@ -67,26 +67,26 @@
                             <a class="this-page" href="/UWPQuickStart/docs/challenges/cortana-integration.html">
                                 Add Cortana Support
                             </a>
-                        </li>       
+                        </li>
                     </ul>
                 </div>
                 <div class="site-toc-container">
                 </div>
             </div>
-        </div> 
-        <span class="doc-fragment-anchor" id=link-0"></span>      
+        </div>
+        <span class="doc-fragment-anchor" id=link-0"></span>
         <div class="col-md-8">
-            <div class="row"> 
+            <div class="row">
                 <h1>Share Your Photos</h1>
                 <p>
                     Now that we have customized the app for our own event, why don’t we make it so that all attendees can view and share photos with other app users? We really don’t want to force all of our attendees to register for some service, so let’s use Imgur’s RESTful APIs to implement a way for all users of our app to share images with each other. We’ll take you through all the steps required to create your own anonymous album (anonymous meaning no sign-ins required), implement methods to take or add photos from the device, and upload/download the images from Imgur into the photos page! <strong>Just a note</strong>, when adding any photos to Imgur this way, they are public for the world to see – but only the users of your app will be able to contribute to the album!
                 </p>
             </div>
-            
-            
+
+
             <span class="doc-fragment-anchor" id=link-1"></span>
             <hr id="Getting-imgur-key-anchor">
-            <div class="row" id="Getting-imgur-key">  
+            <div class="row" id="Getting-imgur-key">
                 <h2>
                     Prerequisite: Getting Imgur API Key
                 </h2>
@@ -97,25 +97,25 @@
                     <p>The first thing we have to do is register our application on Imgur to get our API Keys. When you sign up, you should get an email with the Client ID and Client Secret. Since we are trying to avoid any authentication (signing in), we should only need to use our Client ID – but keep both values handy just in case! To register, click <a href="https://api.imgur.com/#registerapp">here</a>.</p>
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 10px">
             </div>
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <img src="/UWPQuickStart/images/online-image-sync/a-step-1.png"/>
                 </div>
             </div>
-            
-            <span class="doc-fragment-anchor" id=link-2"></span>
+
+            <span class="doc-fragment-anchor" id="link-2"></span>
             <hr id="Download-source-anchor">
-            <div class="row" id="Download-source">  
+            <div class="row" id="Download-source">
                 <h2>
                     Download and Update Source
                 </h2>
                 <h1></h1>
-            </div>  
+            </div>
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">1</div>
                 <div class="col-md-7 getting-started-text">
@@ -125,44 +125,44 @@
                     <img src="/UWPQuickStart/images/online-image-sync/b-step-1.png" >
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 50px">
             </div>
-            
+
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">2</div>
                 <div class="col-md-12 getting-started-text">
                     <p>Once <strong>PhotoStreamUtil.cs</strong> is a part of your project, go ahead and open it up to view the code. At the top of the class, you'll notice there are three private string constants that are missing the right information. We can already fill in one piece of information though - the <strong>ImgurApiClientId</strong> is something that we got when we registered our application with Imgur. Take the <strong>client_id</strong> provided when you registered with Imgur and copy and paste it to be the value of the <strong>ImgurApiClientId</strong> string.</p>
                 </div>
             </div>
-                
-            
-            <div> 
+
+
+            <div>
                 <div class="row" style="height: 10px"/>
             </div>
-            
+
             <div class="row">
                 <div class="col-md-12 getting-started-text">
                     <img src="/UWPQuickStart/images/online-image-sync/b-step-2.png" >
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 50px"/>
             </div>
-            
+
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">3</div>
                 <div class="col-md-12 getting-started-text">
                     <p>Now that we have our Imgur client ID set, the only remaining info we need is an album ID and an album delete hash. The ID is what will let people view the photos, and the delete hash will be our <strong>private</strong> key that will let us (and only us) contribute to the album. To create an album, first open up <strong>PhotoStreamModel.cs</strong> and find the <strong>InitializePhotoCollection()</strong> method. Since we're going to be getting all of our images from Imgur going forward, just go ahead and delete the whole contents of the method. Inside of the method, add the following line of code: <code>await PhotoStreamUtil.CreateAlbum();</code>. Since this is an asynchronous method, you'll also need to add an async identifier to the method signature - it should now be: <code>public async void InitializePhotoCollection()</code>. Finally you'll need to add the following using statement to the top of the class: <code>using UWPQuickStart.Utils;</code>.</p>
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 50px"/>
             </div>
-            
+
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">4</div>
                 <div class="col-md-7 getting-started-text">
@@ -172,11 +172,11 @@
                     <img src="/UWPQuickStart/images/online-image-sync/b-step-7.png">
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 50px"/>
             </div>
-            
+
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">5</div>
                 <div class="col-md-7 getting-started-text">
@@ -186,21 +186,21 @@
                    <img src="/UWPQuickStart/images/online-image-sync/b-step-5.png"/>
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 10px"/>
             </div>
-            
+
             <div class="row">
                 <div class="col-md-12 getting-started-text">
                    <img src="/UWPQuickStart/images/online-image-sync/b-step-4.png"/>
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 50px"/>
             </div>
-            
+
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">6</div>
                 <div class="col-md-7 getting-started-text">
@@ -210,10 +210,10 @@
                     <img src="/UWPQuickStart/images/online-image-sync/b-step-6.png"/>
                 </div>
             </div>
-            
-            <span class="doc-fragment-anchor" id=link-3"></span>
+
+            <span class="doc-fragment-anchor" id="link-3"></span>
             <hr id="Add-pictures-anchor">
-            <div class="row" id="Add-pictures">  
+            <div class="row" id="Add-pictures">
                 <h2>
                     Add Pictures!
                 </h2>
@@ -228,22 +228,22 @@
                     <img src="/UWPQuickStart/images/online-image-sync/c-step-1.png"/>
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 50px"/>
             </div>
-            
+
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">2</div>
                 <div class="col-md-12 getting-started-text">
-                    <p>Now let's make it so our users can add photos. In the <strong>Photos.xaml</strong> page, let's add a new <strong>Grid RowDefinition</strong> with height Auto. Next we'll add a <strong>CommandBar</strong> control to our new row with two <strong>AppBarButton</strong> controls. One for taking a picture with my device's camera, and one for choosing a file that is already on my device. We can make the background of our <strong>CommandBar</strong> the same as our buttons for consistency by adding a <code>Background="{StaticResource ButtonBrush}"</code> property. To style the <strong>AppBarButton</strong> controls, we can assign the following properties. For the first button - 
+                    <p>Now let's make it so our users can add photos. In the <strong>Photos.xaml</strong> page, let's add a new <strong>Grid RowDefinition</strong> with height Auto. Next we'll add a <strong>CommandBar</strong> control to our new row with two <strong>AppBarButton</strong> controls. One for taking a picture with my device's camera, and one for choosing a file that is already on my device. We can make the background of our <strong>CommandBar</strong> the same as our buttons for consistency by adding a <code>Background="{StaticResource ButtonBrush}"</code> property. To style the <strong>AppBarButton</strong> controls, we can assign the following properties. For the first button -
                     <ul>
-                        <li><p><code>Icon="Camera"</code></p></li>  
+                        <li><p><code>Icon="Camera"</code></p></li>
                         <li><p><code>Label="Take Picture"</code></p></li>
                         <li><p><code>Click="CameraButton_Click"</code></p></li>
-                    </ul> <p>and for the second button -</p> 
+                    </ul> <p>and for the second button -</p>
                     <ul>
-                        <li><p><code>Icon="OpenFile"</code></p></li>  
+                        <li><p><code>Icon="OpenFile"</code></p></li>
                         <li><p><code>Label="Add Picture"</code></p></li>
                         <li><p><code>Click="AddPhotoButton_Click"</code></p></li>
                     </ul></p>
@@ -251,27 +251,27 @@
                 </div>
             </div>
 
-            <div> 
+            <div>
                 <div class="row" style="height: 10px"/>
             </div>
-            
+
              <div class="row">
                 <div class="col-md-12 getting-started-text">
                     <img src="/UWPQuickStart/images/online-image-sync/c-step-2.png"/>
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 50px"/>
             </div>
-            
+
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">3</div>
                 <div class="col-md-12 getting-started-text">
                     <p>Now that we have our buttons, we just need to hook them up to something. Navigate to our repo and download the source to handle the buttons from <a href="https://github.com/Microsoft/UWPQuickStart/blob/imgur-integration/src/UWPQuickStart/Views/Photos.xaml.cs">here</a>. Replace the <bold>Photos.xaml.cs<bold> file in your solution with the one you just downloaded. The new class should have three new methods - one for each button, and a helper <bold>SavePhoto</bold> method.</p>
                 </div>
             </div>
-            <div> 
+            <div>
                 <div class="row" style="height: 10px"/>
             </div>
              <div class="row">
@@ -279,11 +279,11 @@
                     <img src="/UWPQuickStart/images/online-image-sync/c-step-3.png"/>
                 </div>
             </div>
-            
-            <div> 
+
+            <div>
                 <div class="row" style="height: 50px"/>
             </div>
-            
+
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">4</div>
                 <div class="col-md-7 getting-started-text">
@@ -293,7 +293,7 @@
                     <img src="/UWPQuickStart/images/online-image-sync/c-step-4.png"/>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
@@ -304,5 +304,5 @@
       </footer>
     </section>
   </body>
-  
+
 </html>
