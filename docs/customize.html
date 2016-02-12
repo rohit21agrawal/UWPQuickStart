@@ -151,21 +151,24 @@
 
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">5</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>Once you acquire a token, you can update the XAML in <strong>EventDetailsPage.xaml</strong> to use it.</p>
-                    <p>Testing the application should now get rid of the warning that you previously saw.</p>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-12 getting-started-text">
                     <pre class="prettyprint"><code class="language-xml">&lt;maps:MapControl x:Name=&quot;mapControl&quot; MapServiceToken=&quot;&lt;Token acquired from the Bing Maps portal&gt;&quot; Grid.Row=&quot;1&quot;/&gt</code>
                     </pre>
                 </div>
+                <div class="col-md-12 getting-started-text">
+                    <p>Testing the application should now get rid of the warning that you previously saw.</p>
+                </div>
+                
             </div>
             <div class="row" style="height: 50px">
             </div>
 
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">6</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>You might want to change the default set of images that the app is using to be specific to your event.
                     </p>
                     <p>
@@ -175,7 +178,7 @@
                     We also going to add some static images for the event (hopefully that will get us more RSVPs!). Later, we will take a look at how to make it a lot more dynamic and fetch the images from some service in the Cloud. One final step you will need to do if you change the set of images is to update the <strong>InitializePhotoCollection()</strong> method in <strong>PhotoStreamModel.cs</strong> to something more appropriate.
                     </p>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-12">
                             <pre class="prettyprint"><code class="language-cs">public void InitializePhotoCollection()
 {
 
