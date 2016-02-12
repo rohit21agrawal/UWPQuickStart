@@ -238,10 +238,17 @@
             <h1></h1>
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">1</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>We're almost there! All that remains is to enable our users to add pictures, and make sure we retrieve pictures from the right source - in this case, Imgur! To start with, let's make sure our photos are getting initialized from the right place. In the <strong>PhotoStreamModel.cs</strong> class, let's update the <code>public async void InitializePhotoCollection()</code> method. Let's delete the line that we added earlier. Since our album is already created, we don't need to create albums anymore. Replace it with <code>await PhotoStreamUtil.GetImagesFromImgur(this);</code>.</p>
                 </div>
-                <div class="col-md-5">
+            </div>
+            
+            <div>
+                <div class="row" style="height: 10px"/>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 getting-started-text">
                     <pre class="prettyprint"><code class="language-cs">public async void InitializePhotoCollection(){
     await PhotoStreamUtil.GetImagesFromImgur(this);
 }
@@ -276,8 +283,16 @@
             </div>
 
              <div class="row">
-                <div class="col-md-12 getting-started-text">
-                    <img src="/UWPQuickStart/images/online-image-sync/c-step-2.png"/>
+                 <div class="col-md-12 getting-started-text">
+                	    <pre class="prettyprint"><code class="language-xml">...&lt;Grid.RowDefinitions&gt;
+    &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
+    &lt;RowDefinition Height=&quot;*&quot;/&gt;
+    &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
+&lt;/Grid.RowDefinitions&gt;
+&lt;CommandBar Background=&quot;{StaticResource ButtonBrush}&quot Grid.Row=&quot;2&quot;&gt;
+    &lt;AppBarButton Icon=&quot;Camera&quot Label=&quot;Take Picture&quot Click=&quot;CameraButton_Click&quot;&gt;
+    &lt;AppBarButton Icon=&quot;OpenFile&quot Label=&quot;Add Picture&quot Click=&quot;AddPhotoButton_Click&quot;&gt;
+&lt;/CommandBar&gt;...</code></pre>
                 </div>
             </div>
 
@@ -296,7 +311,33 @@
             </div>
              <div class="row">
                 <div class="col-md-12 getting-started-text">
-                    <img src="/UWPQuickStart/images/online-image-sync/c-step-3.png"/>
+                    <pre class="prettyprint"><code class="language-cs">private async void CameraButton_Click(object sender, RoutedEventArgs e){
+    CameraCaptureUI captureUI = new CameraCaptureUI();
+    captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
+    StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
+    SavePhoto(photo);
+}
+private async void AddPhotoButton_Click(object sender, RoutedEventArgs e){
+    FileOpenPicker filePicker = new FileOpenPicker();
+    
+    filePicker.FileTypeFilter.Add(".jpeg");
+    filePicker.FileTypeFilter.Add(".png");
+    filePicker.FileTypeFilter.Add(".bmp");
+    filePicker.FileTypeFilter.Add(".jpg");
+    
+    StorageFilePhoto photo = await filePicker.PickSingleFileAsync();
+    SavePhoto(photo);
+}                        
+private async void SavePhoto(StorageFile photo)
+{
+    if(photo == null)
+    {
+        //User cancelled photo capture
+        return;
+    }
+    IRandomAccessStream stream = await photo.OpenAsync(FileAccessMode.Read);
+    await PhotoStreamUtil.AddImage(stream.AsStream(), _photoStreamModel);
+}</code></pre>
                 </div>
             </div>
 
