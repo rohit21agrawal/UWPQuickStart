@@ -370,8 +370,8 @@ img {
   width: 200px;
   -webkit-transition: all 0.1s ease-in-out;
           transition: all 0.1s ease-in-out;
-  padding-top: 7px;
-  padding-left: 3px; }
+  /*padding-top: 7px;
+  padding-left: 3px;*/ }
   .navbar-logo:hover {
     -webkit-transform: scale(1.03);
     -ms-transform: scale(1.03);
