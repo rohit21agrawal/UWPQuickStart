@@ -209,12 +209,24 @@
 
              <div class="row">
                 <div class="number_circle" style="margin-top: 5px">6</div>
-                <div class="col-md-7 getting-started-text">
+                <div class="col-md-12 getting-started-text">
                     <p>The last change we need to make to the source is to update the <code>AlbumDeleteHash</code> and <code>AlbumId</code> properties in the <strong>PhotoStreamUtil.cs</strong> class. Replace the values of both of these properties with the delete hash and album ID retrieved in the last step.</p>
                 </div>
-                <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/online-image-sync/b-step-6.png"/>
-                </div>
+            </div>
+            
+            <div>
+                <div class="row" style="height: 10px"/>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 getting-started-text">
+                      <pre class="prettyprint"><code class="language-cs">internal class PhotoStreamUtil{
+        private const string ImgurApiClientId = "HIDDEN";
+        private const string AlbumDeleteHash = "g7CjQyC08jgDZVl";
+        private const string AlbumId = "Pq4t0";
+...}        
+                  </code></pre>
+            </div>
             </div>
 
             <span class="doc-fragment-anchor" id="link-3"></span>
