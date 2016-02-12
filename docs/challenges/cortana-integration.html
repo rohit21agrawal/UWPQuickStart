@@ -83,7 +83,7 @@
             <div class="row">
                 <h1>Add Cortana Support</h1>
                 <p>
-                    INSERT DESCRIPTION
+                    At this point we have a pretty cool event app that is sure to impress our invitees - but why don't we really wow them with voice integration? Setting up Cortana is a simple step that will really make our app awesome.
                 </p>
             </div>
 
@@ -100,9 +100,9 @@
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">1</div>
                 <div class="col-md-12  getting-started-text">
-                    <p>Well, first off, we need to create a set of rules for Cortana. Basically, this is explaining what she should listen for and what various phrases mean.</p>
-                    <p>We’ll start by adding a simple XML file. This is a simple file that, once your app is deployed, will explain to Cortana what she should listen for. I’m naming it “CortanaCommands.xml”.</p>
-                    <p>Here’s the start to the file, you can just copy and paste this into your XML file:</p>
+                    <p>To begin, we need to create a set of rules for Cortana. The rules will explain what she should listen for and what various phrases mean, and how the device should react to commands.</p>
+                    <p>We’ll start by adding a simple XML file. Once your app is deployed, this file will explain to Cortana what she should listen for. I’m naming it “CortanaCommands.xml”.</p>
+                    <p>Here’s the start to the file, you can just copy and paste this into your new XML file:</p>
                 </div>
                 
                 <div class="col-md-12 getting-started-text">
@@ -132,9 +132,9 @@
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">2</div>
                 <div class="col-md-12   getting-started-text">
-                    <p>You can see that I’ve given a prefix of “Event”. What that means is that Cortana will now listen for the keyword Event in any commands she gets. If she hears that keyword, she’ll take the rest of the phrase and see if it matches any of the “Listen For” phrases. If it does, she’ll start our app. Not only that, but she’ll pass the command to the app. We’ll play with that later. The Feedback tag is what Cortana will say to the user when she recognizes the command.</p>
-                    <p>Now I need to register the commands with Cortana. That’s easy enough to do in my OnLaunched event. This does mean that you’ll have to launch MEvent at least once before it’ll work, but that’s OK for now.</p>
-                    <p>Here are the commands you need to add to the top of the OnLaunched event in App.xaml.cs:</p>
+                    <p>You can see that I’ve included a <strong>CommandPrefix</strong> of “Event”. This means that Cortana will now listen for the keyword "Event" in any commands she gets. If she hears that keyword, she’ll take the rest of the phrase and see if it matches any of the “Listen For” phrases. If it does, she’ll launch our app. Not only that, but she’ll pass the command to the app to trigger some app functionality. We’ll play with that later. The <strong>Feedback</strong> tag is what Cortana will say to the user when she recognizes the command.</p>
+                    <p>Now we need to register the commands with Cortana. That’s easy enough to do in my <code>OnLaunched</code> event in my <strong>App.xaml.cs</strong> class. This does mean that you’ll have to launch the app at least once before Cortana will work, but that’s OK for now.</p>
+                    <p>Here are the commands you need to add to the top of the <code>OnLaunched</code> event in <strong>App.xaml.cs</strong>:</p>
                 </div>
                     
                 <div class="col-md-12 getting-started-text">
@@ -143,7 +143,7 @@
                 </div>
             
                 <div class="col-md-12   getting-started-text">
-                    <p><strong>Tip: </strong>You’ll need to make the event handler async. You’ll also need to add a using command for the VoiceCommandDefinitionManager (It’s in Windows.ApplicationModel.VoiceCommands)</p>
+                    <p><strong>Tip: </strong>You’ll need to make the event handler async. You’ll also need to add a using statemtn for the VoiceCommandDefinitionManager library - It’s in Windows.ApplicationModel.VoiceCommands</p>
                 </div>
             </div>
             
@@ -154,10 +154,7 @@
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">3</div>
                 <div class="col-md-12   getting-started-text">
-                    <p>So with this, let’s test it out. Launch the app first to make sure we’ve deployed the Cortana commands, then close it.</p>
-                    <p>Next, start up Cortana either by clicking the microphone next to her, or if it’s enabled, say “Hey Cortana”.</p>
-                    <p>Now say “Event Register”</p>
-                    <p>If everything is set up correctly, Cortana should launch the event. </p>
+                    <p>We can already test it out. Launch the app first to make sure we’ve deployed the Cortana commands, then close it. Next, start up Cortana either by clicking the microphone next to her, or if it’s enabled, say “Hey Cortana”. When Cortana is listening, say “Event Register". If everything is set up correctly, Cortana should launch the event. </p>
                 </div>
             </div>
             
@@ -173,9 +170,9 @@
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">1</div>
                 <div class="col-md-12 getting-started-text">
-                    <p>That’s pretty cool already, but let’s go another step. If I’m at my event and I want to see the photos, maybe I don’t want to have to navigate. Let’s have Cortana jump right to the photostream for me.
+                    <p>That’s pretty cool already, but let’s go another step. If I’m at my event and I want to see the photos, maybe I don’t want to have to navigate. Let’s have Cortana jump right to the photos page for me.
                     </p>
-                    <p>First, I need to add a new command, so here’s the code I’m using:
+                    <p>First, I need to add a new command, so here’s the code I’ve added to <strong>CortanaCommands.xml</strong>:
                     </p>
                 </div>
                 
@@ -198,9 +195,9 @@
                 <div class="col-md-12 getting-started-text">
                     <p>We’ve now got two commands, GetStarted and Photos. Unfortunately, our app doesn’t know what to do if Cortana passes either of these commands to us. It’s just going to launch and let us deal with it.
                     </p>
-                    <p>Whenever an app starts, either the OnLaunched or OnActivated event will be fired. OnLaunched will fire if the app is launched “normally”. This includes clicking on the tile or if Cortana launches it without a command. However, if Cortana launches the app with a command, like the way we’ve been doing it, the OnActivated event will fire instead.
+                    <p>Whenever an app starts, either the <code>OnLaunched</code> or <code>OnActivated</code> event will be fired. OnLaunched will fire if the app is launched “normally”. This includes clicking on the tile or if Cortana launches it without a command. However, if Cortana launches the app with a command, like the way we’ve been doing it, the OnActivated event will fire instead.
                     </p>
-                    <p>The default template has all of the initialization code in OnLaunched, but we need that same code to execute when we’re Activated instead. So, we need to refactor that code. To save ourselves a bit of complication in the refactor, locate the line with the call to rootFrame.Navigate(typeof(EventMainPage), e). Remove the e parameter. The chunk of code should now look like this:
+                    <p>The default template has all of the initialization code in <code>OnLaunched</code>, but we need that same code to execute when we’re activated instead. So, we need to refactor that code. To save ourselves a bit of complication in the refactor, locate the line with the call to <code>rootFrame.Navigate(typeof(EventMainPage), e)</code>. Remove the e parameter. The chunk of code should now look like this:
                     </p>
                 </div>
                 
@@ -222,7 +219,7 @@
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">3</div>
                 <div class="col-md-12 getting-started-text">
-                    <p>Great, now you need to select the contents of the OnLaunched handler, starting with the two lines we added to register the voice commands through the call to Window.Current.Activate(). With those lines selected, choose Edit / Refactor / Extract Method. This will move all of this code to its own method. Now we can call into that from our OnActivated event handler.
+                    <p>Now we need to select the contents of the <code>OnLaunched</code> handler, starting with the two lines we added to register the voice commands through the call to <code>Window.Current.Activate()</code>. With those lines selected, choose Edit / Refactor / Extract Method. This will move all of this code to its own method. Now we can call into that from our OnActivated event handler.
                     </p>
                     <p>Your code should look like this now:
                     </p>
@@ -248,7 +245,7 @@ private async System.Threading.Tasks.Task InitializeFrame()
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">4</div>
                 <div class="col-md-12 getting-started-text">
-                    <p>Great, now we’ve got what we need to create our OnActivated event handler. Put your cursor on a line inside the App.xaml.cs that isn’t in a method (but is inside the class). Start typing “protected override void” and Intellisense should come up with a list of possible event handlers. OnActivated should be in the list (for me, it’s at the top). Just hit enter and it’ll put the stub into your code for you.
+                    <p>Great, now we’ve got what we need to create our <code>OnActivated</code> event handler. Put your cursor on a line inside the <strong>App.xaml.cs</strong> that isn’t in a method (but is inside the class). Start typing “protected override void” and Intellisense should come up with a list of possible event handlers. OnActivated should be in the list (for me, it’s at the top). Just hit enter and it’ll put the stub into your code for you.
                     </p>
                 </div>
                 
@@ -260,7 +257,7 @@ private async System.Threading.Tasks.Task InitializeFrame()
                 </div>
                 
                 <div class="col-md-12 getting-started-text">
-                    <p>We need to call the method to initialize our Frame, so just add that call. You’ll also need to make this event handler async as well.
+                    <p>We need to call the method to initialize our Frame, so just add that call. You’ll also need to make this event handler async.
                     </p>
                 </div>
                 
@@ -285,8 +282,8 @@ private async System.Threading.Tasks.Task InitializeFrame()
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">1</div>
                 <div class="col-md-12  getting-started-text">
-                    <p>At this point, I realize that the event as it exists doesn’t have the ability to navigate to a page at launch OTHER than the start page. Well, that’s not what we had in mind, but we want to extend that a bit. So, we’re going to have to make a quick tweak to the code.</p>
-                    <p>Open up EventMainPage.xaml.cs. Near the bottom is an event handler for NavMenu_ItemClickHandler. That handler does three things and the second is to actually navigate. We need to extract that line to its own method. So, highlight that line and again, choose Edit / Refactor / ExtractMethod. I called it SwitchToWindow. You may need to tweak it slightly, but we want our method to take an argument of type “Type”. We’ll use this to navigate to the page we want later.</p>
+                    <p>At this point, I realize that the event as it exists doesn’t have the ability to navigate to a page at launch other than the start page. Well, that’s not what we had in mind, but we will extend that now.</p>
+                    <p>Open up <strong>EventMainPage.xaml.cs</strong>. Near the bottom is an event handler for NavMenu_ItemClickHandler. That handler does three things, one of which is to actually navigate. We need to extract that line to its own method. So, highlight that line and again choose Edit / Refactor / ExtractMethod. I called it SwitchToWindow. You may need to tweak it slightly, but we want our method to take an argument of type “Type”. We’ll use this to navigate to the page we want later.</p>
                     <p>Your code should look like this:</p>
                 </div>
                 
@@ -305,7 +302,7 @@ public void SwitchToWindow(System.Type desiredPage)
                 </div>
                 
                 <div class="col-md-12  getting-started-text">
-                    <p>Awesome, now we’re ready to finish our OnActivated event handler. By the time we’re done, we want to do three things. In order, we want to figure out which command Cortana gave us, Initialize our Frame and finally, navigate to the Photos page if we got the “Photo” command.</p>
+                    <p>Now we’re ready to finish our <code>OnActivated</code> event handler. By the time we’re done, we want to do three things. In order: we want to figure out which command Cortana gave us, Initialize our Frame, and navigate to the Photos page if we got the “Photo” command.</p>
                 </div>
             </div>
             
@@ -316,7 +313,7 @@ public void SwitchToWindow(System.Type desiredPage)
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">2</div>
                 <div class="col-md-12  getting-started-text">
-                    <p>When our app is started with a voice command, the args passed to us are actually of the type VoiceCommandActivatedEventArgs. Once we know that we were activated with a voice command, we can cast the args to the right type. We can figure out how we were activated with the “Kind” property which comes from the IActivatedEventArgs interface.</p>
+                    <p>When our app is started with a voice command, the args passed to us are actually of the type VoiceCommandActivatedEventArgs. Once we know that we were activated with a voice command, we can cast the args to the right type. We can figure out how we were activated with the “Kind” property which comes from the <code>IActivatedEventArgs</code> interface.</p>
                     <p>Put all this together and your code will end up looking like this:</p>
                 </div>
                 
@@ -372,7 +369,7 @@ public void SwitchToWindow(System.Type desiredPage)
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">4</div>
                 <div class="col-md-12  getting-started-text">
-                    <p>Great, now we’ve got the CommandName and we can just switch on that. Once we know which command we’re using, we pass the right type to SwitchToWindow and we’re golden. The switch statement is pretty simple…</p>
+                    <p>We’ve got the CommandName now and we can just switch on that. Once we know which command we’re using, we pass the right type to <code>SwitchToWindow</code> and we’re golden. The switch statement is pretty simple…</p>
                 </div>
                 
                 <div class="col-md-12 getting-started-text">
@@ -403,7 +400,7 @@ public void SwitchToWindow(System.Type desiredPage)
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">5</div>
                 <div class="col-md-12  getting-started-text">
-                    <p>Great. Now we want to call SwitchToWindow with the right type. I approached this a couple ways, but the easiest way I could think of was to assume we wanted to go to the EventHome unless I hear otherwise. So, just before the switch, I’m going to initialize a variable with typeof(EventHome) as a value and change it when I need to. Now my code looks like this:</p>
+                    <p>Now we want to call SwitchToWindow with the right type. We're going to assume we want to go to the EventHome unless Cortana hear's otherwise. So, just before the switch, I’m going to initialize a variable with <code>typeof(EventHome)</code> as a value and change it when I need to (when Cortana hears "Photos"). Now my code looks like this:</p>
                 </div>
                 
                 <div class="col-md-12 getting-started-text">
@@ -437,8 +434,8 @@ switch (CommandName)
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">6</div>
                 <div class="col-md-12  getting-started-text">
-                    <p>Let’s pass that StartingPage to SwitchToWindow and we’re done. Unfortunately, SwitchToWindow is on the Root Frame. We can get that the long way, but since our InitializeFrame method uses the rootFrame, let’s just return it. All I need to do is modify the signature of the InitializeFrame method to return the frame, and I can use that.</p>
-                    <p>Change the InitializeFrame method signature to this:</p>
+                    <p>Let’s pass that <code>StartingPage</code> to <code>SwitchToWindow</code> and we’re done. Unfortunately, <code>SwitchToWindow</code> is on the <code>rootFrame</code>. We can get that the long way, but since our <code>InitializeFrame</code> method uses the rootFrame, let’s just return it. All I need to do is modify the signature of the <code>InitializeFrame</code> method to return the frame, and I can use that.</p>
+                    <p>Change the <code>InitializeFrame</code> method signature to this:</p>
                 </div>
                 
                 <div class="col-md-12 getting-started-text">
@@ -457,7 +454,7 @@ switch (CommandName)
             <div class="row">
                 <div class="number_circle" style="margin-top: 5px">7</div>
                 <div class="col-md-12  getting-started-text">
-                    <p>Back to our OnActivated event handler, let’s call InitializeFrame and capture the Frame on the way out. Add these lines after the switch:</p>
+                    <p>Back to our <code>OnActivated</code> event handler, let’s call <code>InitializeFrame</code> and capture the Frame on the way out. Add these lines after the switch:</p>
                 </div>
                 
                 <div class="col-md-12 getting-started-text">
@@ -466,7 +463,7 @@ switch (CommandName)
                 </div>
                 
                 <div class="col-md-12 getting-started-text">
-                    <p>The first line grabs the rootFrame and the second line casts its Content as our EventMainPage. Once we’ve got that, we can call SwitchToWindow and we’re in business.</p>
+                    <p>The first line grabs the <code>rootFrame</code> and the second line casts its <code>Content</code> as our <code>EventMainPage</code>. Once we’ve got that, we can call <code>SwitchToWindow</code> and we’re in business.</p>
                 </div>
                 
             </div>
@@ -580,7 +577,7 @@ protected async override void OnActivated(IActivatedEventArgs args)
                     <p>With all of this, let’s run our app and get everything registered correctly. Press F5 (or Play) and the app will run. If you set a breakpoint in OnLaunched, you can watch everything get initialized. When I started doing this, I ran into some glitches, and every time I hit Play from Visual Studio, I never got the OnActivated event firing. Well, that’s because a launch from VS is considered “Standard”, so that event never triggers.</p>
                     <p>Since I wanted to debug the Activated experience, I didn’t know how to tell VS to launch the app as if from Cortana. Turns out that VS has me covered. Right click the project and pick the properties. Under “Debug”, I can choose an option to “Not launch, but debug on launch”. Click that on and hit Play.</p>
                     <p>Now everything is deployed, but my app hasn’t started. Put a breakpoint in OnActivated so we can see everything do what it’s supposed to. Click on Cortana and say “Event Register”. MEvent launches and the debugger kicks in. If everything is set up right, you’ll hit that breakpoint and now you can debug.</p>
-                    <p>Awesome. Close MEvent and you’ll see that VS doesn’t stop. Click Cortana and say “Event photos”. There we go. </p>
+                    <p>Awesome. Close the app and you’ll see that VS doesn’t stop. Click Cortana and say “Event photos”. There we go. </p>
                 </div>
             </div>
 			<hr id="Download-Solution-anchor">
