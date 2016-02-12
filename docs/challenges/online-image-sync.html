@@ -224,8 +224,7 @@
         private const string ImgurApiClientId = "HIDDEN";
         private const string AlbumDeleteHash = "g7CjQyC08jgDZVl";
         private const string AlbumId = "Pq4t0";
-...}        
-                  </code></pre>
+...}</code></pre>
             </div>
             </div>
 
@@ -243,7 +242,10 @@
                     <p>We're almost there! All that remains is to enable our users to add pictures, and make sure we retrieve pictures from the right source - in this case, Imgur! To start with, let's make sure our photos are getting initialized from the right place. In the <strong>PhotoStreamModel.cs</strong> class, let's update the <code>public async void InitializePhotoCollection()</code> method. Let's delete the line that we added earlier. Since our album is already created, we don't need to create albums anymore. Replace it with <code>await PhotoStreamUtil.GetImagesFromImgur(this);</code>.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="/UWPQuickStart/images/online-image-sync/c-step-1.png"/>
+                    <pre class="prettyprint"><code class="language-cs">public async void InitializePhotoCollection(){
+    await PhotoStreamUtil.GetImagesFromImgur(this);
+}
+</code></pre>
                 </div>
             </div>
 
