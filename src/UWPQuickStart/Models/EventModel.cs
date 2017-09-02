@@ -15,7 +15,7 @@ namespace UWPQuickStart.Models
         {
             EventName = "John's Band Debut";
             EventAddress = "Pike Place Market, Seattle";
-            EventStartTime = new DateTime(2016, 3, 4, 20, 0, 0);
+            EventStartTime = new DateTime(2017, 11, 4, 20, 0, 0);
             EventDuration = new TimeSpan(4, 0, 0);
             EventInviteText = "It's a Friday night and I feel like jamming. Join me for some good music!";
             EventStartTimeFriendly = EventStartTime.ToString("dddd, MMMM dd, yyyy") + " at " +
