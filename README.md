@@ -3,8 +3,8 @@ Building a Universal Windows app in Visual Studio is quick and easy. We've provi
 
 **[GET STARTED](http://microsoft.github.io/UWPQuickStart/index.html)**
 
-##License
+## License
 This sample is are released under the MIT license
 
-##Contribution
+## Contribution
 This repo is currently not open to contributions.
